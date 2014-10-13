@@ -1,0 +1,47 @@
+<!doctype html>
+<include file="Public:header" />
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>login index</title>
+	<link rel="stylesheet" href="__PUBLIC__/Home/Css/login_index.css">
+</head>
+<body>
+	<div id="login_wrap">
+		<h2>经常登录的同志是好同志</h2>
+<!-- 		<div id="login_left">
+	<a href=""><img src="__PUBLIC__/Home/Imgs/qq_login.jpg" /></a>
+	<a href=""><img src="__PUBLIC__/Home/Imgs/sina_login.jpg" /></a>
+	<a href=""><img src="__PUBLIC__/Home/Imgs/dou_login.jpg" /></a>
+</div> -->
+		<div id="login_right">
+			<form action="__APP__/Login/checkLogin/" method="post">
+				<table cellpadding="0" cellspacing="0" border="0">
+					<tr>
+						<td width="70" align="center">
+						E-mail</td>
+						<td colspan="2"><input type="text" style="width:220px;" name="username"></td>
+					</tr>
+					<tr>
+						<td width="70" align="center">密&nbsp;&nbsp;码</td>
+						<td colspan="2"><input type="password" style="width:220px;" name="userpwd"></td>
+					</tr>
+					<tr valign="middle">
+						<td>&nbsp;</td>
+						<td><label><input type="checkbox" name="jizhu"><span style="margin-top:-20px;font-size:14px;">自动登录</span></label></td>
+						<td align="right"><a href="__APP__/Login/safe/" style="text-decoration:none;color:#992222;font-size:13px;">忘记密码?</a></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>
+							<button type="submit"></button>
+						</td>
+						<td></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</div>
+</body>
+</html>
+<include file="Public:footer"/>

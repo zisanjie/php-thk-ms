@@ -1,0 +1,95 @@
+<include file="Public:form.head" />
+<script>
+    $(function(){
+
+        $('.skin-color').click(function(){
+
+            $('head').append("<link id='skinstyle' rel='stylesheet' href='__PUBLIC__/Admin/tpl/css/style."+$(this).attr('href')+".css' type='text/css' />");   
+
+            $.post('__URL__/changecolor',{'color':$(this).attr('href')},function(data){
+                // alert(data);
+                        
+            });
+            return false;
+        });
+    });
+
+</script>
+<body onload = "startTime();">
+
+<div class="mainwrapper">
+    
+    <include file="Public:menu.body" />
+    
+    <!-- START OF RIGHT PANEL -->
+    <div class="rightpanel">
+        <include file="Public:users.body" /><!--右边头部-->
+        <div class="breadcrumbwidget">
+        	<ul class="skins">
+                <li><a href="default" class="skin-color default"></a></li>
+                <li><a href="orange" class="skin-color orange"></a></li>
+                <li><a href="dark" class="skin-color dark"></a></li>
+                <li>&nbsp;</li>
+                <li class="fixed"><a href="" class="skin-layout fixed"></a></li>
+                <li class="wide"><a href="" class="skin-layout wide"></a></li>
+            </ul><!--skins-->
+        	<ul class="breadcrumb">
+                <li><a href="__APP__/Index/main">Home</a> <span class="divider">/</span></li>
+                <li><a href="#">权限管理</a> <span class="divider">/</span></li>
+                <li class="active">添加权限</li>
+            </ul>
+        </div><!--breadcrumbs-->
+        <div class="pagetitle">
+        	<h1>添加权限</h1> <span>用来用户添加权限信息</span>
+        </div><!--pagetitle-->
+        
+        <div class="maincontent">
+        	<div class="contentinner">
+            	<h4 class="widgettitle">添加权限</h4>
+                <div class="widgetcontent">
+                	<form class="stdform" action="__APP__/Roles/ins" method="post" >
+                        <p>
+                            <label>权限名称</label>
+                            <span class="field">
+                                <input type="text" name="name" class="input-xxlarge" placeholder="权限名称" />
+                            </span>
+                        </p>
+
+                        <!-- <p>
+                            <label>操作模块</label>
+                            <span class="field">
+                                <input type="text" name="back" class="input-xxlarge" placeholder="操作模块" />
+                            </span>
+                        </p> -->
+                        
+                       <p>
+                            <label>权限描述</label>
+                            <span class="field">
+                                <textarea cols="80" rows="5" name="describe" class="span6" style="resize:none;" placeholder="权限描述"></textarea>
+                            </span> 
+                        </p>
+                                     
+                        <p class="stdformbutton">
+                            <button class="btn btn-primary">Submit</button>
+                            <button type="reset" class="btn">Reset</button>
+                        </p>
+                           
+                    </form>  
+                </div><!--widgetcontent-->
+            </div><!--contentinner-->
+        </div><!--maincontent-->
+        
+    </div><!--mainright-->
+    <!-- END OF RIGHT PANEL -->
+    
+    <div class="clearfix"></div>
+    
+    <div class="footer">
+        <div class="footerleft">快达租赁管理 v1.0</div>
+        <div class="footerright">&copy; twen_Yee </div>
+    </div><!--footer-->
+
+    
+</div><!--mainwrapper-->
+</body>
+</html>

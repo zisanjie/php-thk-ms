@@ -1,0 +1,158 @@
+<include file="Public:table.head" />
+<script>
+    $(function(){
+
+        $('.skin-color').click(function(){
+
+            $('head').append("<link id='skinstyle' rel='stylesheet' href='__PUBLIC__/Admin/tpl/css/style."+$(this).attr('href')+".css' type='text/css' />");   
+
+            $.post('__URL__/changecolor',{'color':$(this).attr('href')},function(data){
+                // alert(data);
+                        
+            });
+            return false;
+        });
+    });
+
+</script>
+<body onload = "startTime();">
+
+<div class="mainwrapper">
+    
+    <include file="Public:menu.body" />
+    
+    <!-- START OF RIGHT PANEL -->
+    <div class="rightpanel">
+        <include file="Public:users.body" /><!--右边头部-->
+        <div class="breadcrumbwidget">
+            <ul class="skins">
+                <li><a href="default" class="skin-color default"></a></li>
+                <li><a href="orange" class="skin-color orange"></a></li>
+                <li><a href="dark" class="skin-color dark"></a></li>
+                <li>&nbsp;</li>
+                <li class="fixed"><a href="" class="skin-layout fixed"></a></li>
+                <li class="wide"><a href="" class="skin-layout wide"></a></li>
+            </ul><!--skins-->
+            <ul class="breadcrumb">
+                <li><a href="__APP__/Index/main">Home</a> <span class="divider">/</span></li>
+                <li><a href="#">车辆管理</a> <span class="divider">/</span></li>
+                <li class="active">修改车辆</li>
+            </ul>
+        </div><!--breadcrumbs-->
+        <div class="pagetitle">
+            <h1>修改车辆</h1> <span>用来修改车辆信息</span>
+        </div><!--pagetitle-->
+        
+        <div class="maincontent">
+            <div class="contentinner">
+            
+                <h4 class="widgettitle">修改车辆</h4>
+                <form class="form-horizontal" id="form-validate" action="__APP__/Foods/up" method="post" enctype="multipart/form-data" />
+                    <table id="datatables" class="table table-bordered table-striped responsive">
+                              <tr>
+                                <td rowspan='7'></td>
+                                <td width="42%" rowspan="7" style="border-left:0px;">
+                                <img src="__ROOT__/Uploads/Foods/<{$data.pic}>" width="400" height='300'/>
+                                </td>
+                                <th width="17%">名称</th>
+                                <td width="41%">
+                                  <input type="hidden" name="id" value="<{$data.id}>" />
+                                  <input type="text" name='name'  class="grd-white" value="<{$data.name}>"/>
+                                </td>
+                              </tr>
+                              <tr>
+                                <th>上传</th>
+                                <td><input type="file" class="grd-white" name="pic" id="pic" /></td>
+                              </tr>
+                              <tr>
+                                  <th>价格</th>
+                                  <td>
+                                  <input type="text" name='price' class="grd-white" value="<{$data.price}>"/>
+                                  </td>
+                            </tr>
+                            <tr>
+                                  <th>上架时间</th>
+                                  <td><{$data.regtime|date="Y-m-d H:i:s",###}></td>
+                             </tr>
+                            <tr>
+                                  <th>所属分类</th>
+                                  <td>
+                                        <select name="cid" id="sname" class="grd-white">
+                                                <volist name="sdata" id="vc">
+                                                        <option value="<{$vc.id}>" <{$vc['id']==$data['cid']?'selected':''}>>
+                                                            <{$vc.sname}>
+                                                        </option>
+                                                </volist>
+                                        </select>
+                                  </td>
+                             </tr>
+                            <tr>
+                                  <th>排行</th>
+                                  <td>
+                                  <input type="text" name='orderno' class="grd-white" value="<{$data.orderno}>"/>
+                                  </td>
+                            </tr>
+                            <tr>
+                                  <th height="41">状态</th>
+                                  <td>
+                                    <select name="status" >
+                                          <option value="1" <{$data['status']==1?'selected':''}>>
+                                              在售
+                                          </option>
+                                          <option value="2" <{$data['status']!=1?'selected':''}>>
+                                            下架
+                                          </option>
+                                    </select>
+                                  </td>
+                            </tr>
+                            <tr height='100' class="describe">
+                                  <th height="50" >车辆描述</th>
+                                  <td colspan="3">
+                                    <textarea name='describe' cols='93' rows='5' style="height:100px;width:98%; resize:none;" /><{$data.describe}></textarea>
+                                  </td>
+                            </tr>
+                            <tr>
+                                  <td height="50" colspan="4" >
+                                        <button type="submit" class="btn btn-primary">修改</button>
+                                  </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    </form>     
+                
+               <!--  <div class="divider15"></div>
+               
+               <pre class="prettyprint linenums">//Include this script in your document &lt;head&gt;
+               &lt;script type=&quot;text/javascript&quot; src=&quot;js/jquery.dataTables.min.js&quot;&gt;&lt;/script&gt;</pre>
+               
+               <div class="divider15"></div>
+               
+               <pre class="prettyprint linenums">// dynamic table<br>jQuery('#dyntable').dataTable({
+                  &quot;sPaginationType&quot;: &quot;full_numbers&quot;,
+                  &quot;aaSortingFixed&quot;: [[0,'asc']],
+                  &quot;fnDrawCallback&quot;: function(oSettings) {
+                     jQuery.uniform.update();
+                  }<br>});<br></pre>
+                  
+                                <div class="divider15"></div>
+                  
+                                <pre class="prettyprint linenums">&lt;table class=&quot;table table-bordered&quot; id=&quot;dyntable&quot;&gt;</pre> -->
+                
+                
+            </div><!--contentinner-->
+        </div><!--maincontent-->
+        
+    </div><!--mainright-->
+    <!-- END OF RIGHT PANEL -->
+    
+    <div class="clearfix"></div>
+    
+    <div class="footer">
+        <div class="footerleft">快达租赁管理 v1.0</div>
+      <div class="footerright">&copy; twen_Yee </div>
+    </div><!--footer-->
+    
+</div><!--mainwrapper-->
+
+</body>
+</html>

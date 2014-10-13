@@ -1,0 +1,63 @@
+body{
+	background:white;
+}
+#left {
+	background:url(../Imgs/border_bg.png) no-repeat;			
+}
+#top ul {
+	height:35px;	
+	text-align:center;		
+}
+#top ul li{
+	float:left;
+	width:60px;
+	height:35px;
+	line-height:35px;
+	font-size:14px;	
+	color:red;
+}
+#left_menu{
+	float:left;
+	width:40px;
+	min-height:400px;
+	overflow:hidden;			
+	margin:10px 0px;		
+}		
+
+#left_menu li{			
+	margin:0px 7px;
+	height:48px;
+	line-height:20px;
+	width:25px;
+	font-size:14px;	
+	color:green;
+	text-align:center;				
+	background:url(../Imgs/left_tab_Selectedno.png) no-repeat;
+}
+
+#right_menu{
+	float:left;
+	width:100px;
+	color:#0C1021;
+	font-size:14px;
+	height:auto;
+	overflow:hidden;						
+}
+#right_menu ul{
+	margin-left:15px;
+	text-align:left;
+}
+#right_menu li{
+	height:35px;
+	line-height:35px;
+	border-bottom:#DDD 1px dotted;
+}
+
+#menu_top{
+	background:url(../Imgs/left_tabid_cnt_top.png) no-repeat;
+	height:11px;
+}
+#menu_end{
+	background:url(../Imgs/border_end.png) no-repeat;
+	height:11px;
+}		

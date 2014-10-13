@@ -1,0 +1,73 @@
+body{
+	background:white;
+	font-size:14px;
+}
+
+/*后台表格定义开始*/
+table{
+	width:80%;
+	color:#0C1021;
+	text-align:center;
+	border:#BAD6EC 1px solid;
+	border-bottom:0px;
+	border-left:0px;
+}
+
+th{
+	font-size:14px;
+	height:40px;	
+	border-bottom:#BAD6EC 1px solid;
+	border-left:#BAD6EC 1px solid;
+}
+
+td{
+	height:25px;	
+	border-bottom:#BAD6EC 1px solid;
+	border-left:#BAD6EC 1px solid;
+	font-size:13px;
+}
+/*后台表格定义结束*/
+
+/*后台导航条定义开始*/
+#nav{
+	height:47px;
+	color:white;
+	font-size:14px;	
+	background:url("../Imgs/bg_header.gif") repeat-x;		
+}
+#nav .s1{
+	float:left;
+	display:block;
+	width:15px;
+	height:47px;			
+	background:url("../Imgs/main_hl2.gif") no-repeat;
+}
+#nav .s2{
+	float:left;
+	display:block;			
+	height:47px;
+	line-height:40px;
+	background:url("../Imgs/main_hb.gif") repeat-x;			
+}
+#nav .s3{
+	float:left;
+	display:block;
+	width:60px;
+	height:47px;			
+	background:url("../Imgs/main_hr.gif") no-repeat;
+}
+/*后台导航条定义结束*/
+
+/*按钮定义开始*/
+.but26{
+	height:26px;
+	width:50px;
+}
+/*按钮定义结束*/
+
+/*文本框定义开始*/
+.inp22{
+	width:180px;
+	height:22px;
+}
+/*文本框定义结束*/

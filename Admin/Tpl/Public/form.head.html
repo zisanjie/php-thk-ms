@@ -1,0 +1,56 @@
+<?php if(!session('?mid')){?>
+    <script type="text/javascript">window.location.href="__APP__/Index/index";</script>
+<?php }?>
+<!DOCTYPE html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>快达汽车管理</title>
+<link rel="stylesheet" href="__PUBLIC__/Admin/tpl/css/style.default.css" type="text/css" />
+<link rel="stylesheet" href="__PUBLIC__/Admin/tpl/prettify/prettify.css" type="text/css" />
+<link rel="stylesheet" href="__PUBLIC__/Admin/tpl/css/style.<{$Think.session.color}>.css" type="text/css" />
+<link rel="stylesheet" href="__PUBLIC__/Admin/tpl/css/bootstrap-fileupload.min.css" type="text/css" />
+<link rel="stylesheet" href="__PUBLIC__/Admin/tpl/css/bootstrap-timepicker.min.css" type="text/css" />
+<script type="text/javascript" src="__PUBLIC__/Admin/tpl/prettify/prettify.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Admin/tpl/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Admin/tpl/js/jquery-migrate-1.1.1.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Admin/tpl/js/jquery-ui-1.9.2.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Admin/tpl/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Admin/tpl/js/bootstrap-fileupload.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Admin/tpl/js/bootstrap-timepicker.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Admin/tpl/js/jquery.uniform.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Admin/tpl/js/jquery.validate.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Admin/tpl/js/jquery.tagsinput.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Admin/tpl/js/jquery.autogrow-textarea.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Admin/tpl/js/charCount.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Admin/tpl/js/ui.spinner.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Admin/tpl/js/chosen.jquery.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Admin/tpl/js/jquery.cookie.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Admin/tpl/js/custom.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Admin/tpl/js/forms.js"></script>
+<script type="text/javascript">
+	function startTime(){
+	        var today=new Date();
+	        var Y = today.getFullYear();
+	        var M = today.getMonth()+1;
+	        var D = today.getDate();
+	        var h=today.getHours();
+	        var m=today.getMinutes();
+	        var s=today.getSeconds();
+	       
+	        M=checkTime(M);
+	        m=checkTime(m);
+	        s=checkTime(s);
+	        document.getElementById('txt').innerHTML=Y+'-'+M+'-'+D+'　'+h+":"+m+":"+s;
+	        t=setTimeout('startTime()',500);
+	}
+
+	function checkTime(i){
+		if (i<10) {
+			i="0" + i;
+		}
+
+		return i;
+	}
+</script>
+</head>

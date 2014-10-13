@@ -1,0 +1,183 @@
+#inner{
+	background: none repeat scroll 0 0 #ECECEC;
+	border-radius:20px;
+	border-top:#DFDFDF 1px solid;
+	border-left:#C0C0C0 1px solid;
+	border-right:#C0C0C0 1px solid;
+	border-bottom:#9B9B9B 1px solid;
+	display: block;
+	height:120px;			
+}
+
+.dismiss_button{
+	width:15px;
+	height:15px;
+	float:right;
+	margin:10px 20px;
+	background: url("../Imgs/welcome_close.gif") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+	text-indent: -9999px;	
+}
+
+a.dismiss_button:active {
+	background: url("../Imgs/welcome_close.gif") no-repeat scroll -15px 0 rgba(0, 0, 0, 0);
+	width: 15px;
+	height: 15px;
+	overflow: hidden;		
+}
+
+#content{					
+	height:auto;
+	overflow:hidden;
+	background:none no-repeat scroll 0 0 #FFFFFF;
+}
+/* 顶部美食展示区 */
+#content .content_top{
+	width:100%;
+	height:auto;
+	overflow:hidden;					
+}
+/* 顶部美食展示图片 */
+#content .top_left{
+	float:left;
+	margin:10px 10px 0px 10px;
+	width:620px;
+	min-height:400px;						
+}
+
+#content .top_left_down{
+	/*position:absolute;*/
+	margin-top:-158px;
+	
+}
+#content .top_left img{
+	display:block;
+	/*border-radius:10px;*/
+}
+
+
+/* 搜索、公告和美食推荐区 */
+#content .top_right{
+	float:left;
+	margin:10px 0px 0px 0px;
+	width:330px;
+	height:400px;
+	background:#0F91CF;	
+	color:white;						
+}
+
+/* 优惠区域 */
+#notice{
+	width:90%;	
+	height:150px;	
+	margin:0px 5%;
+	border-bottom:#DDDDDD 1px dotted;
+}
+#notice table th{
+	text-align:left;
+}
+
+#notice table a{
+	color:white;
+}
+/* 订单区域 */
+#reco{
+	width:100%;
+	height:auto;
+	margin:0px 5%;
+}
+
+/* 美食分类展示 */
+#menu_classes{	
+	width:960px;
+	height:auto;
+	overflow:hidden;
+	float:left;
+	margin:0px 10px;
+	background:#F3F3F3;
+}
+#menu_classes ul{
+	display:block;
+	width:680px;
+	height:35px;
+	line-height:35px;
+	float:left;
+}
+
+#menu_classes label{
+	display:block;
+	float:left;
+	width:280px;
+	height:35px;
+	line-height:35px;
+	margin:0px;
+	padding:0px;
+}
+
+#menu_classes li{
+	float:left;
+	margin:0px 1px;
+	display:block;
+	height:35px;
+	line-height:35px;
+	min-width:80px;
+	text-align:center;
+}
+
+#menu_classes a.foods_type{
+	font-size:15px;
+	display:block;
+	height:30px;
+	line-height:30px;
+	color:#111111;
+}
+#menu_classes div{
+	margin:5px 20px;
+}
+#menu_classes span{
+ 	margin-left:10px;
+}
+
+/* 美食更多 */
+#menu_snack,#menu_veg,#menu_pri{	
+	min-height:180px;
+	border:#CCCCCC 1px solid;	
+}
+#menu_veg .close1,#menu_pri .close2,#menu_snack .close3{
+	float:right;
+	position:relative;
+	top:80px;
+}
+#menu_snack a.foods_type,#menu_pri a.foods_type,#menu_veg a.foods_type{
+	font-size:15px;
+	display:block;
+	height:30px;
+	line-height:30px;
+	color:#111111;
+}
+#menu_snack div,#menu_pri div,#menu_veg div{
+	margin:5px 20px;
+}
+#menu_snack span,#menu_pri span,#menu_veg span{
+ 	margin-left:10px;
+}
+
+#menu_pref{
+	width:100%;
+	min-height:180px;
+	border:#CCCCCC 1px solid;	
+}
+
+#waterfall .goto_top{
+	float:right;
+}
+
+/* 用户订单展示区 */
+#content_menu_right{
+	width:330px;
+	height:180px;	
+	float:left;
+	margin:0px;
+	/*border:#CCCCCC 1px solid;*/
+	color:white;
+}
+

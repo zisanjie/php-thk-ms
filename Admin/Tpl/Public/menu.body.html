@@ -1,0 +1,161 @@
+<!-- <script type="text/javascript" src="__PUBLIC__/Js/jquery-1.8.3.js"></script> -->
+<script type="text/javascript">
+    // $(function(){
+    //     $('input:text,textarea,input:password').blur(function(){
+    //         $(this).nextAll('.nowADD').remove();
+    //         if(!$(this).val()){
+    //                 if('start_time' == $(this).attr('name')){
+    //                         $(this).next().after('<font color="red" class="nowADD">数据不可为空</font>');
+    //                 }else{
+    //                 $(this).after('<font color="red" class="nowADD">数据不可为空</font>');
+    //                 }
+    //         }else{
+    //                 if(('price' == $(this).attr('name') && isNaN($(this).val())) || ('orderno' == $(this).attr('name') && isNaN($(this).val()))){
+    //                     $(this).after('<font color="red" class="nowADD">必须是数字</font>');
+    //                 }else{
+    //                     if('start_time' != $(this).attr('name') && 'start_time' != $(this).attr('name')){
+    //                     $(this).after('<font color="green" class="nowADD">输入正确</font>');
+    //                     }
+    //                 }
+    //         }
+            
+    //     });
+    // });
+</script>
+    <div class="leftpanel">
+    	
+        <div class="logopanel">
+        	<h1><a href="__APP__/Index/index/"><{$webData.title}> <span>v1.0</span></a></h1>
+        </div><!--logopanel-->
+        
+        <div class="datewidget" id="txt"></div>
+        <div class="searchwidget" style="height:36px;"></div><!--searchwidget-->
+
+        <div class="leftmenu">        
+            <ul class="nav nav-tabs nav-stacked">
+            	<li class="nav-header">主菜单</li>
+                    <li class="active">
+                        <a href="__APP__/Index/main">
+                            <span class="icon-home"></span> 控制面板
+                        </a>
+                    </li>
+               <if condition="$Think.session.mroles eq 1 or $Think.session.mroles eq 2 or $Think.session.mroles eq 4 ">
+                <li class="dropdown"><a href=""><span class="icon-user"></span> 用户管理</a>
+                	<ul>
+                    	   <li><a href="__APP__/Users/listPage">普通组&nbsp;---&nbsp;列表</a></li>
+                        <li><a href="__APP__/Users/listManage">管理组&nbsp;---&nbsp;列表</a></li>
+                        <li><a href="__APP__/Users/addManage">管理组&nbsp;---&nbsp;添加</a></li>
+                    </ul>
+                </li>
+                </if>
+
+                <if condition="$Think.session.mroles eq 1 or $Think.session.mroles eq 2"> 
+                 <li class="dropdown"><a href=""><span class="icon-calendar"></span> 酒店管理</a>
+                    <ul>
+                        <li><a href="__APP__/Hotels/listPage">酒店列表</a></li>
+                        <li><a href="__APP__/Hotels/addHotel">酒店组&nbsp;---&nbsp;添加</a></li>
+                    </ul>
+                </li>
+                </if>
+                <if condition="$Think.session.mroles eq 1 or $Think.session.mroles eq 2"> 
+                 <li class="dropdown"><a href=""><span class="icon-th"></span> 单位管理</a>
+                    <ul>
+                        <li><a href="__APP__/Departments/listPage">单位列表</a></li>
+                        <li><a href="__APP__/Departments/addDepartment">单位组&nbsp;---&nbsp;添加</a></li>
+                    </ul>
+                </li>
+                </if>
+                <if condition="$Think.session.mroles eq 1 or $Think.session.mroles eq 2"> 
+                 <li class="dropdown"><a href=""><span class="icon-th"></span> 客户管理</a>
+                    <ul>
+                        <li><a href="__APP__/Customers/listPage">客户列表</a></li>
+                        <li><a href="__APP__/Customers/addCustomer">客户组&nbsp;---&nbsp;添加</a></li>
+                    </ul>
+                </li>
+                </if>
+
+                <if condition="$Think.session.mroles eq 1 or $Think.session.mroles eq 2">
+                <li class="dropdown"><a href=""><span class="icon-user"></span> 权限管理</a>
+                    <ul>
+                        <li><a href="__APP__/Roles/listPage">权限列表</a></li>
+                        <!-- <li><a href="__APP__/Roles/addPage">添加权限</a></li> -->
+                        <li><a href="__APP__/Roles/addAdmin">添加用户</a></li>
+                    </ul>
+                </li>
+                </if>
+                <if condition="$Think.session.mroles eq 1 or $Think.session.mroles eq 3">
+                <li class="dropdown"><a href=""><span class="icon-th-list"></span> 分类管理</a>
+                	<ul>
+                    	   <li><a href="__APP__/Bclass/selBclass">一级分类&nbsp;---&nbsp;列表</a></li>
+                        <li><a href="__APP__/Bclass/addBclass">一级分类&nbsp;---&nbsp;添加</a></li>
+                        <li><a href="__APP__/Sclass/selSclass">二级分类&nbsp;---&nbsp;列表</a></li>
+                        <li><a href="__APP__/Sclass/addSclass">二级分类&nbsp;---&nbsp;添加</a></li>
+                    </ul>
+                </li>
+
+                <li class="dropdown"><a href=""><span class="icon-th"></span> 车辆管理</a>
+                	<ul>
+                    	   <li><a href="__APP__/Foods/selFoods">列表</a></li>
+                        <li><a href="__APP__/Foods/addFoods">添加</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a href=""><span class="icon-th"></span> 优惠管理</a>
+                    <ul>                        
+                        <li><a href="__APP__/Foods/showFav">新优惠</a></li>
+                        <li><a href="__APP__/Foods/addFav">添加优惠</a></li>
+                        <li><a href="__APP__/Foods/listFav">历史记录</a></li>
+                    </ul>
+                </li>
+                </if>
+                <if condition="$Think.session.mroles eq 1 or $Think.session.mroles eq 5">
+                <li class="dropdown"><a href=""><span class="icon-bell"></span> 订单管理</a>
+                    <ul>
+                        <li><a href="__APP__/Forms/new_forms">新订单</a></li>                        
+                        <li><a href="__APP__/Forms/listPage">历史订单</a></li>
+                        <!-- <li><a href="#">稽查订单</a></li> -->
+                    </ul>
+                </li>               
+               </if>
+               <if condition="$Think.session.mroles eq 1 or $Think.session.mroles eq 8">
+                <li class="dropdown"><a href=""><span class="icon-comment"></span> 车辆评论</a>
+                	<ul>
+                    	   <li><a href="__APP__/Evaluate/evaluateList">评论列表</a></li>
+                        <!-- <li><a href="#">统计</a></li> -->
+                    </ul>
+                </li>
+                </if>
+                <if condition="$Think.session.mroles eq 1 or $Think.session.mroles eq 2 or $Think.session.mroles eq 4">                
+                <li class="dropdown"><a href=""><span class="icon-ban-circle"></span> IP管理</a>
+                	<ul>
+                    	<li><a href="__APP__/Ip/listPage">禁用IP</a></li>
+                        <li><a href="__APP__/Ip/addPage">添加IP</a></li>
+                    </ul>
+                </li>
+                </if>
+                <if condition="$Think.session.mroles eq 1 or $Think.session.mroles eq 2"> 
+                 <li class="dropdown"><a href=""><span class="icon-file"></span> 日志管理</a>
+                    <ul>
+                        <li><a href="__APP__/Logs/showLogs">日志列表</a></li>
+                        <!-- <li><a href="#">导出日志</a></li> -->
+                    </ul>
+                </li>
+
+                <li class="dropdown"><a href=""><span class="icon-globe"></span> 友情链接</a>
+                	<ul>
+                    	<li><a href="__APP__/Friendlinks/listLinks">链接列表</a></li>
+                        <li><a href="__APP__/Friendlinks/addLinks">添加链接</a></li>
+                    </ul>
+                </li>
+                
+                <li class="dropdown"><a href=""><span class="icon-globe"></span> 站点信息</a>
+                    <ul>
+                        <li><a href="__APP__/Webconfig/sysinfo">系统信息</a></li>
+                        <li><a href="__APP__/Webconfig/webedit">站点配置</a></li>
+                    </ul>
+                </li>
+                </if>
+            </ul>
+        </div><!--leftmenu-->
+        
+    </div><!--mainleft-->
+    <!-- END OF LEFT PANEL

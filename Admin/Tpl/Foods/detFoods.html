@@ -1,0 +1,217 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>车辆管理</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="" />
+        <meta name="author" content="stilearning" />
+
+        <!-- styles -->
+        <link href="__PUBLIC__/Muban/css/bootstrap.css" rel="stylesheet" />
+        <link href="__PUBLIC__/Muban/css/bootstrap-responsive.css" rel="stylesheet" />
+        <link href="__PUBLIC__/Muban/css/stilearn.css" rel="stylesheet" />
+        <link href="__PUBLIC__/Muban/css/stilearn-responsive.css" rel="stylesheet" />
+        <link href="__PUBLIC__/Muban/css/stilearn-helper.css" rel="stylesheet" />
+        <link href="__PUBLIC__/Muban/css/stilearn-icon.css" rel="stylesheet" />
+        <link href="__PUBLIC__/Muban/css/font-awesome.css" rel="stylesheet" />
+        <link href="__PUBLIC__/Muban/css/animate.css" rel="stylesheet" />
+        <link href="__PUBLIC__/Muban/css/uniform.default.css" rel="stylesheet" />
+        
+        <link href="__PUBLIC__/Muban/css/DT_bootstrap.css" rel="stylesheet" />
+        <link href="__PUBLIC__/Muban/css/responsive-tables.css" rel="stylesheet" />        
+      
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    </head>
+
+    <body>
+   <!-- section content -->
+        <section class="section">
+            <div class="row-fluid">
+                <!-- span content -->
+                <div class="span9" style="width:97%;margin:0px 0px 0px 3%;padding:0px;text-align:left;">
+                    <!-- content -->
+                    <div class="content"> 
+                         <!-- content-header -->
+                        <div class="content-header">
+                            <ul class="content-header-action pull-right">
+                                <li>
+                                    <a href="#">
+                                        <div class="badge-circle grd-green color-white"><i class="icofont-plus-sign"></i></div>
+                                        <div class="action-text color-green">
+                                            <empty name="webCount.total">0
+                                            <else /> <{$webCount.total}> 
+                                            </empty>
+                                             <span class="helper-font-small color-silver-dark">用户数</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="#">
+                                        <div class="badge-circle grd-teal color-white"><i class="icofont-user-md"></i></div>
+                                        <div class="action-text color-teal">
+                                            <empty name="webCount.new">0
+                                            <else /> <{$webCount.new}> 
+                                            </empty>
+                                        <span class="helper-font-small color-silver-dark">新用户</span></div>
+                                    </a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="#">
+                                        <div class="badge-circle grd-orange color-white">$</div>
+                                        <div class="action-text color-orange">
+                                            <empty name="webCount.money">0
+                                            <else /> <{$webCount.money}> 
+                                            </empty>
+                                            <span class="helper-font-small color-silver-dark">总额</span>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                            <h2><i class="icofont-file"></i>站点信息</h2>
+                        </div><!-- /content-header -->
+                        
+                        <!-- content-breadcrumb -->
+                        <div class="content-breadcrumb">
+                            <!--breadcrumb-->
+                            <ul class="breadcrumb">
+                                <li><a href="__APP__/Index/main"><i class="icofont-home"></i>Home</a> <span class="divider">&rsaquo;</span></li>
+                                <li><a href="#">车辆管理</a> <span class="divider">&rsaquo;</span></li>
+                                <li class="active">车辆详情</li>
+                            </ul><!--/breadcrumb-->
+                        </div><!-- /content-breadcrumb -->
+                        <!-- content-body -->
+                        <div class="content-body">
+                            <!-- tables -->
+                            <!--datatables-->
+                            <div class="row-fluid">
+                                <div class="span12">
+                                    <div class="box corner-all">
+                                        <div class="box-header grd-white corner-top">
+                                            <div class="header-control">
+                                                <a data-box="collapse"><i class="icofont-caret-up"></i></a>
+                                                <a data-box="close" data-hide="bounceOutRight">&times;</a>
+                                            </div>
+                                            <span>列表</span>
+                                        </div>
+                                        <div class="box-body">
+                                            <table id="datatables" class="table table-bordered table-striped responsive">
+                                                      <tr>
+                                                        <td rowspan='7'></td>
+                                                        <td width="42%" rowspan="7" style="border-left:0px;">
+                                                        <img src="__ROOT__/Uploads/Foods/<{$data.pic}>" width="400" height='300'/>
+                                                        </td>
+                                                        <th width="17%">编号</th>
+                                                        <td width="41%"><{$data.id}></td>
+                                                      </tr>
+                                                      <tr>
+                                                        <th>名称</th>
+                                                        <td><{$data.name}></td>
+                                                      </tr>
+                                                      <tr>
+                                                        <th>价格</th>
+                                                        <td><{$data.price}></td>
+                                                      </tr>
+                                                      <tr>
+                                                        <th>上架时间</th>
+                                                        <td><{$data.regtime|date="Y-m-d H:i:s",###}></td>
+                                                      </tr>
+                                                      <tr>
+                                                        <th>所属分类</th>
+                                                        <td><{$data.cid}></td>
+                                                      </tr>
+                                                      <tr>
+                                                        <th>排行</th>
+                                                        <td><{$data.orderno}></td>
+                                                      </tr>
+                                                      <tr>
+                                                        <th height="41">状态</th>
+                                                        <td><{$data['status']==1?在售:下架}></td>
+                                                      </tr>
+                                                      <tr height='100' class="describe">
+                                                        <th height="50" >车辆描述</th>
+                                                        <td colspan="3"><{$data.describe}></td>
+                                                      </tr>
+                                                      <tr>
+                                                        <th height="50" colspan="4" >
+                                                          <a href="__APP__/Foods/upFoods/id/<{$data.id}>">修改车辆信息</a></th>
+                                                      </tr>
+                                                </tbody>
+                                            </table>                                            
+                                        </div><!-- /box-body -->
+                                    </div><!-- /box -->
+                                </div><!-- /span -->
+                            </div><!--/datatables-->
+
+                         </div>
+                       </div> 
+                   </div>
+                 </div>
+             </section>
+
+             <!-- javascript
+        ================================================== -->
+       
+        <script src="__PUBLIC__/Muban/js/jquery.js"></script>
+        <script src="__PUBLIC__/Muban/js/bootstrap.js"></script>
+        <script src="__PUBLIC__/Muban/js/uniform/jquery.uniform.js"></script>
+        
+        <script src="__PUBLIC__/Muban/js/datatables/jquery.dataTables.min.js"></script>
+        <script src="__PUBLIC__/Muban/js/datatables/extras/ZeroClipboard.js"></script>
+        <script src="__PUBLIC__/Muban/js/datatables/extras/TableTools.min.js"></script>
+        <script src="__PUBLIC__/Muban/js/datatables/DT_bootstrap.js"></script>
+        <script src="__PUBLIC__/Muban/js/responsive-tables/responsive-tables.js"></script>
+        
+        <!-- required stilearn template js, for full feature-->
+        <script src="__PUBLIC__/Muban/js/holder.js"></script>
+        <script src="__PUBLIC__/Muban/js/stilearn-base.js"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function() {
+                // try your js
+                
+                // uniform
+                $('[data-form=uniform]').uniform();
+                
+                // datatables
+                $('#datatables').dataTable( {
+                    "sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>",
+                    "sPaginationType": "bootstrap",
+                    "oLanguage": {
+                            "sLengthMenu": "_MENU_ records per page"
+                    }
+                });
+                
+                // datatables table tools
+                $('#datatablestools').dataTable({
+                    "sDom": "<'row-fluid'<'span6'T><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>",
+                    "oTableTools": {
+                        "aButtons": [
+                            "copy",
+                            "print",
+                            {
+                                "sExtends":    "collection",
+                                "sButtonText": 'Save <span class="caret" />',
+                                "aButtons":    [ 
+                                    "xls", 
+                                    "csv",
+                                    {
+                                        "sExtends": "pdf",
+                                        "sPdfOrientation": "landscape",
+                                        "sPdfMessage": "Your custom message would go here."
+                                    }
+                                ]
+                            }
+                        ],
+                        "sSwfPath": "js/datatables/swf/copy_csv_xls_pdf.swf"
+                    }
+                });
+            });
+      
+        </script>
+        
+        <body>
+</html>
+                            

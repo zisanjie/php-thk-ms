@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>车辆管理</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="" />
+        <meta name="author" content="stilearning" />
+
+        <!-- styles -->
+        <link href="__PUBLIC__/Muban/css/bootstrap.css" rel="stylesheet" />
+        <link href="__PUBLIC__/Muban/css/bootstrap-responsive.css" rel="stylesheet" />
+        <link href="__PUBLIC__/Muban/css/stilearn.css" rel="stylesheet" />
+        <link href="__PUBLIC__/Muban/css/stilearn-responsive.css" rel="stylesheet" />
+        <link href="__PUBLIC__/Muban/css/stilearn-helper.css" rel="stylesheet" />
+        <link href="__PUBLIC__/Muban/css/stilearn-icon.css" rel="stylesheet" />
+        <link href="__PUBLIC__/Muban/css/font-awesome.css" rel="stylesheet" />
+        <link href="__PUBLIC__/Muban/css/animate.css" rel="stylesheet" />
+        <link href="__PUBLIC__/Muban/css/uniform.default.css" rel="stylesheet" />
+        
+        <link href="__PUBLIC__/Muban/css/prettyPhoto.css" rel="stylesheet" />
+        
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    </head>
+
+    <body>
+        <!-- section content -->
+        <section class="section">
+            <div class="row-fluid">
+                <!-- span content -->
+                <div class="span9" style="width:97%;margin:0px 0px 0px 3%;padding:0px;text-align:left;">
+                    <!-- content -->
+                    <div class="content">
+                         <!-- content-header -->
+                        <div class="content-header">
+                            <ul class="content-header-action pull-right">
+                                <li>
+                                    <a href="#">
+                                        <div class="badge-circle grd-green color-white"><i class="icofont-plus-sign"></i></div>
+                                        <div class="action-text color-green">
+                                            <empty name="webCount.total">0
+                                            <else /> <{$webCount.total}> 
+                                            </empty>
+                                             <span class="helper-font-small color-silver-dark">用户数</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="#">
+                                        <div class="badge-circle grd-teal color-white"><i class="icofont-user-md"></i></div>
+                                        <div class="action-text color-teal">
+                                            <empty name="webCount.new">0
+                                            <else /> <{$webCount.new}> 
+                                            </empty>
+                                        <span class="helper-font-small color-silver-dark">新用户</span></div>
+                                    </a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="#">
+                                        <div class="badge-circle grd-orange color-white">$</div>
+                                        <div class="action-text color-orange">
+                                            <empty name="webCount.money">0
+                                            <else /> <{$webCount.money}> 
+                                            </empty>
+                                            <span class="helper-font-small color-silver-dark">总额</span>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                            <h2><i class="icofont-file"></i>站点信息</h2>
+                        </div><!-- /content-header -->
+                        
+                        <!-- content-breadcrumb -->
+                        <div class="content-breadcrumb">
+                            <!--breadcrumb-->
+                            <ul class="breadcrumb">
+                                <li><a href="__APP__/Index/main"><i class="icofont-home"></i>Home</a> <span class="divider">&rsaquo;</span></li>
+                                <li><a href="#">车辆管理</a> <span class="divider">&rsaquo;</span></li>
+                                <li class="active">图片展示</li>
+                            </ul><!--/breadcrumb-->
+                        </div><!-- /content-breadcrumb -->
+
+                        <!-- content-body -->
+                        <div class="content-body">
+                            <!-- gallery -->
+                            <div class="row-fluid">
+                                <div class="span12">
+                                    <div class="gallery">
+                                        <div class="gallery-content">
+                                            <ul class="thumbnails" id="portfolio-list">                                                
+                                                <volist name="data" id="vo">
+                                                <li class="design">
+                                                    <input class="selecter" type="checkbox" name="item[]" value="<{$vo.id}>" />
+                                                    <div class="thumbnail">
+                                                        <img src="__ROOT__/Uploads/Foods/thumb/th_<{$vo.pic}>" width="120" height="120" alt="" />
+                                                        <div class="thumbnail-control">
+                                                            <div class="controls">
+                                                                <a href="__ROOT__/Uploads/Foods/<{$vo.pic}>" rel="prettyPhoto[gallery]" title="大图"><i class="icofont-search"></i></a>
+                                                                <a href="__APP__/Foods/upFoods/id/<{$vo.id}>" title="编辑"><i class="icofont-edit"></i></a>
+                                                                <a href="#modalConfirm" title="删除" class="_del" alt="<{$vo.pic}>"  data-toggle="modal" ><i class="icofont-trash"></i></a>
+                                                                <p class="description"><{$vo.name}></p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                               </volist>                                                
+                                            </ul>
+                                        </div>
+                                        <div class="gallery-controls bottom">
+                                            <div class="gallery-category">
+                                                <div class="pull-right">
+                                                    <span>page 1 of 8</span>
+                                                    <span>|</span>
+                                                    <div class="btn-group dropup">
+                                                        <input data-form="uniform" class="gallery-selector" type="checkbox" />
+                                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                                            <i class="icon-cog" style="margin-top: -7px;"></i>
+                                                        </a>
+                                                        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                                            <li><a tabindex="-1" href="#" class="getDataSelected">删除所有</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="portfolio-filter">
+                                                    <span>显示 :</span>
+                                                    <span class="label"><a class="filterable" href="#all" rel="all">所有</a></span>
+                                                    <span class="label"><a class="filterable" href="#design" rel="design">Design</a></span>
+                                                    <span class="label"><a class="filterable" href="#portofolio" rel="portofolio">Portofolio</a></span>
+                                                    <span class="label"><a class="filterable" href="#uncategories" rel="uncategories">Uncategories</a></span>
+                                                </div>
+                                            </div>
+                                            <ul class="pager helper-font-small">
+                                                <li class="previous disabled">
+                                                    <a href="#">&larr; 首页</a>
+                                                </li>
+                                                <li class="disabled"><a href="#">上一页</a></li>
+                                                <li class="disabled"><a href="#">1</a></li>
+                                                <li><a href="#">3</a></li>
+                                                <li><a href="#">4</a></li>
+                                                <li><a href="#">5</a></li>
+                                                <li><a href="#">6</a></li>
+                                                <li><a href="#">下一页</a></li>
+                                                <li class="next">
+                                                    <a href="#">尾页 &rarr;</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <!-- Modal Confirm -->
+                                    <div id="modalConfirm" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                            <h3 id="myModalLabel">操作</h3>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>你确定要删除?</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button class="btn" data-dismiss="modal" aria-hidden="true">取消</button>
+                                            <button class="btn btn-danger" aria-hidden="true" id="_delyes">确定</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!--/gallery-->
+                        </div><!--/content-body -->
+                    </div><!-- /content -->
+                </div><!-- /span content -->
+                
+            </div>
+        </section>
+
+        <!-- javascript
+        ================================================== -->
+        <script src="__PUBLIC__/Muban/js/jquery.js"></script>
+        <script src="__PUBLIC__/Muban/js/bootstrap.js"></script>
+        <script src="__PUBLIC__/Muban/js/uniform/jquery.uniform.js"></script>
+        
+        <script src="__PUBLIC__/Muban/js/pricing-table/prefixfree.js"></script> <!-- this required for scale animated where thumbnails hover -->
+        <script src="__PUBLIC__/Muban/js/prettyPhoto/jquery.prettyPhoto.js"></script>
+        <script src="__PUBLIC__/Muban/js/filterable/filterable.js"></script>
+        <script src="__PUBLIC__/Muban/js/filterable/jquery.easing.1.3.js"></script>
+         
+        <!-- required stilearn template js, for full feature-->
+        <script src="__PUBLIC__/Muban/js/holder.js"></script>
+        <script src="__PUBLIC__/Muban/js/stilearn-base.js"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function() {
+                
+               $('#_delyes').click(function(){
+                    $url = "__APP__/Foods/del/id/"+$('.selecter:checked').val();
+                    
+
+                    // alert($('.selecter:checked').next().('._del').attr('alt'));
+
+                    $.ajax({
+                       type: "GET",
+                       url: $url,
+                       success: function(msg){
+                           //删除成功!
+                           // $("#modalConfirm").close();
+                       }
+                    });
+
+               });
+
+
+
+
+                // uniform
+                $('[data-form=uniform]').uniform();
+                
+                // gallery setup
+                $('.gallery-selector').change(function(){
+                    checked = $(this).attr('checked');
+                    checked = (checked == undefined) ? false : true ;
+                    
+                    $('input.selecter, .gallery-selector').attr('checked', checked);
+                    $.uniform.update('.gallery-selector');
+                    
+                    // toggle class for thumbnail
+                    thumbnail = $('input.selecter').attr('checked', checked).next();
+                    if(checked == true){
+                        thumbnail.addClass('active');
+                    }
+                    else{
+                        thumbnail.removeClass('active')
+                    }
+                });
+                
+                $('.thumbnail-control .controls').click(function(e){
+                    selecter = $(this).parent().parent().prev();
+                    checked  = selecter.attr('checked');
+                    if(checked == undefined){
+                        checked = true;
+                    }
+                    else{
+                        checked = false;
+                        $('.gallery-selector').attr('checked', checked);
+                        $.uniform.update('.gallery-selector');
+                    }
+                    
+                    $(selecter).attr('checked', checked);
+                    thumbnail = $(selecter).next();
+                    if(e.target.nodeName == 'DIV'){
+                        thumbnail.toggleClass('active');
+                    }
+                });
+                
+                // get data
+                $('.getDataSelected').click(function(){
+                    data = $('input.selecter[checked=checked]').serialize(); // or you can use serializeArray()
+                    alert(data);
+                })
+                
+                
+                // prettyPhoto
+                $("a[rel^='prettyPhoto']").prettyPhoto();
+                
+                // filterable
+                $('#portfolio-list').filterable({
+                    tagSelector : '.portfolio-filter a.filterable'
+                });
+                $('.portfolio-filter a').click(function(){
+                    return false;
+                });
+            });
+        </script>
+    </body>
+</html>

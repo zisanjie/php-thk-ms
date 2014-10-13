@@ -1,0 +1,46 @@
+*,body{
+	margin:0px;
+	padding:0px;
+}
+#login_wrap{
+	width:980px;
+	height:400px;
+	margin:0px auto;
+	/*border:red 1px solid;*/
+	border-top:#CCCCCC 1px solid;
+}
+h2{
+	width:100%;
+	height:100px;
+	line-height:100px;
+	text-align:center;
+}
+#login_left{
+	width:200px;
+	height:180px;
+	margin-left:165px;
+	/*border:red 1px solid;*/
+	float:left;
+}
+#login_left img{
+	margin-top:15px;
+}
+#login_right{
+	width:300px;
+	height:210px;
+	/*margin-top:15px;*/
+	margin:20px auto;
+}
+#login_right input{
+	height:25px;
+}
+#login_right tr{
+	height:50px;
+	line-height:50px;
+}
+button{
+	width:60px;
+	height:38px;
+	border:none;
+	background:url('../Imgs/login_index.jpg');
+}

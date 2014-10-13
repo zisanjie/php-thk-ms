@@ -1,0 +1,53 @@
+<!doctype html>
+<include file="Public:header"/>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>订单详情</title>
+            <link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/Css/posts_details.css">
+</head>
+
+<body>
+	<div id="details_main">	     
+                <div class="nav">
+                    <img class="nav_o" src="__PUBLIC__/Home/Imgs/orders_actions_icon.gif">
+                    <span>订单详情</span>
+                </div>
+                <div>              
+                <table width="100%" cellspacing="0" cellpadding="0" align="center">
+                                <tr>
+                                    <th style="text-align:left;text-indent:3em;">名称</th>
+                                    <th class="center">单价</th>
+                                    <th class="center">优惠</th>
+                                    <th class="center">数量</th>
+                                    <th class="center">成交价</th>
+                                </tr>
+                                <volist name="data" id="vo">                                        
+                                        <tr>
+                                            <td style="text-align:left;text-indent:3em;">
+                                                    <{$vo.foodname}>
+                                            </td>
+                                            <td class="center"><{$vo.price}>￥</td>
+                                            <td class="center">
+                                                <empty name="vo.yprice"><{$vo.price}>￥
+                                                <else /> <{$vo.yprice}>￥
+                                                </empty>
+                                            </td>
+                                            
+                                            <td class="center">
+                                                <{$vo.foods_number}>
+                                            </td>
+                                            <td class="center">
+                                                <{$vo.nprice}>￥
+                                            </td>
+                                        </tr>
+                                </volist>                               
+                  </table>
+                  </div>
+                  <div style="text-align:right;height:50px;line-height:50px;clear:both;color:#AF5F5F;">
+                                <p style="margin-right:50px;">总计:<{$udata.sum}>￥</p>
+                   </div>
+	</div>
+</body>
+</html>
+<include file="Public:footer"/>

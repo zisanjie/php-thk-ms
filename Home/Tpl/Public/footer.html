@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>DCMS</title>
+	<link href="__PUBLIC__/Home/Css/footer.css" rel="stylesheet" type="text/css" />	
+</head>
+<body>
+	<div id="footer">
+			<span class="footer_left">
+				<a href="__APP__/Us/us/">关于我们</a>
+				<a href="__APP__/Help/help/">帮助中心</a>
+				<a href="__APP__/Us/contact2Us/">联系我们</a>
+			</span><br>
+			<span class="footer_left">
+				Copyright&copy;<{$webData.email}> <{$webData.contact}>
+				<{$webData.icpno}>
+			</span>
+			
+			<volist name="linkData" id="linkVo">
+				<span class="footer_left" style="margin-left:10px;">
+					<a href="http://<{$linkVo.url}>" target="<{$linkVo.target}>"><{$linkVo.title}></a>
+				</span>
+			</volist>
+
+<!-- 			<span class="footer_right" style="margin-left:5px;">
+	唯有车辆与爱不可辜负
+</span> -->
+	</div>
+</body>
+</html>

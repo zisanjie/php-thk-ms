@@ -1,0 +1,81 @@
+#con{					
+	height:auto;
+	overflow:hidden;
+	background:none no-repeat scroll 0 0 #FFFFFF;
+}
+
+#con .con_top{
+	width:100%;
+	height:auto;
+	overflow:hidden;					
+}
+#con .content_login{
+	margin-left:10px;
+	width:823px;
+	height:327px;					
+}
+#con .login_left{
+	float:left;
+	width:544px;
+	height:327px;
+}
+#con .left1{
+	width:524px;
+	height:52px;
+	line-height:72px;
+	padding-left:20px;
+	border-bottom:1px dotted #C8C8C8;
+}
+#con .left1_login{
+	font-size:18px;
+	font-weight:bold;
+}
+#con .center_left{
+	font-size:16px;
+	text-align:right;
+	padding-right:5px;
+}
+#con .xing{
+	color:red;
+}
+#con .center_center{
+	font-size:12px;
+	color:#7E7E7E;
+}
+#con .login_submit{
+	background:#0F91CF;
+	width:56px;
+	height:26px;
+	border:0px;
+	/* 半径 */
+	border-radius:5px;
+	font-size:12px;
+	font-weight:bold;
+	color:#fff;
+}
+#con .login_right{
+	float:left;
+	width:279px;
+	height:327px;
+	background:#0F91CF;
+	color:#fff;
+}
+#con .login_right span{
+	float:right;
+}
+#con .login_right h6{
+	font-size:13px;
+	padding-top:35px;
+	padding-left:20px;
+	height:40px;
+	line-height:40px;
+}
+#con .login_right p{
+	font-size:12px;
+	padding-left:20px;
+	height:15px;
+	line-height:15px;
+}
+#con .login_right p a{
+	color:white;
+}

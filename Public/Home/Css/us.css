@@ -1,0 +1,85 @@
+#us{					
+	height:auto;
+	overflow:hidden;
+	background:none no-repeat scroll 0 0 #FFFFFF;
+}
+
+#us .us_top{
+	width:100%;
+	height:auto;
+	overflow:hidden;					
+}
+#us .center_top{
+	width:978px;
+	height:80px;
+}
+
+#us .title{
+	width:958px;
+	height:30px;
+	margin-top:10px;
+	margin-left:10px;
+	padding-bottom:5px;
+	border-bottom:1px solid #ccc;
+}
+#us .center_bottom{
+	width:978px;
+	min-height:366px;
+}
+#us .center_left{
+	float:left;
+	margin:0px 10px 0px 10px;
+	width:620px;
+	height:310px;					
+}
+#us .center_left p{
+	font-size:13px;
+	margin-left:20px;
+	text-indent:2em;
+}
+#us .center_left p a{
+	font-size:16px;
+	margin-left:20px;
+	font-weight:bold;
+}
+#us .center_right{
+	float:left;
+	margin:0px 0px 0px 10px;
+	width:980px;
+	height:365px;							
+}
+#us .center_right span{
+	font-size:13px;
+	color:#4D4D4D;
+	height:30px;
+	line-height:65px;
+	font-weight:bold;
+	margin-top:-10px;
+}
+#us .center_right p{
+	font-size:12px;
+	color:#4D4D4D;
+	height:30px;
+	line-height:15px;
+	margin-top:-15px;
+}
+.contact2Us-E1{
+	width:10px;
+	height:100px;
+	background:#9DE008;
+	float:left;
+	margin:1px 0px;
+}
+.contact2Us-E{
+	margin:1px 0px;
+	width:810px;
+	min-height:100px;
+	background:#F3F3F3;
+	float:left;
+}
+
+.contact2Us-E p{
+	text-indent:5em;
+	height:30px;
+	line-height:30px;
+}

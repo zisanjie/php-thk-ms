@@ -1,0 +1,134 @@
+<include file="Public:table.head" />
+<script>
+    $(function(){
+
+        $('.skin-color').click(function(){
+
+            $('head').append("<link id='skinstyle' rel='stylesheet' href='__PUBLIC__/Admin/tpl/css/style."+$(this).attr('href')+".css' type='text/css' />");   
+
+            $.post('__URL__/changecolor',{'color':$(this).attr('href')},function(data){
+                // alert(data);
+                        
+            });
+            return false;
+        });
+    });
+
+</script>
+<body onload = "startTime();">
+
+<div class="mainwrapper">
+    
+    <include file="Public:menu.body" />
+    
+    <!-- START OF RIGHT PANEL -->
+    <div class="rightpanel">
+        <include file="Public:users.body" /><!--右边头部-->
+        <div class="breadcrumbwidget">
+            <ul class="skins">
+                <li><a href="default" class="skin-color default"></a></li>
+                <li><a href="orange" class="skin-color orange"></a></li>
+                <li><a href="dark" class="skin-color dark"></a></li>
+                <li>&nbsp;</li>
+                <li class="fixed"><a href="" class="skin-layout fixed"></a></li>
+                <li class="wide"><a href="" class="skin-layout wide"></a></li>
+            </ul><!--skins-->
+            <ul class="breadcrumb">
+                <li><a href="__APP__/Index/main">Home</a> <span class="divider">/</span></li>
+                <li><a href="#">订单管理</a> <span class="divider">/</span></li>
+                <li class="active">历史订单</li>
+            </ul>
+        </div><!--breadcrumbs-->
+        <div class="pagetitle">
+            <h1>历史订单</h1> <span>用来显示所有历史订单信息</span>
+        </div><!--pagetitle-->
+        
+        <div class="maincontent">
+            <div class="contentinner">
+            
+                <h4 class="widgettitle">历史订单</h4>
+                <table class="table table-bordered" id="dyntable">
+                    <colgroup>
+                        <col class="con0" style="align: center; width: 4%" />
+                        <col class="con1" />
+                        <col class="con0" />
+                        <col class="con1" />
+                        <col class="con0" />
+                        <col class="con1" />
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th class="head0 nosort"><input type="checkbox" class="checkall" /></th>
+                            <th class="center">ID</th>
+                            <th class="center">订单号</th>
+                            <th class="center">订车人</th>
+                            <th class="center">接车地址</th> 
+                            <th class="center">订车时间</th>
+                            <th class="center">订单状态</th>
+                            <th class="center">详情</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <volist name="data" id="vo">
+                            <tr class="gradeX">
+                                <td class="aligncenter">
+                                    <span class="center">
+                                        <input type="checkbox" />
+                                    </span>
+                                </td>
+
+                                <td class="center"><{$i}></td>
+                                <td class="center"><{$vo.form_number}></td>
+                                <td class="center"><{$vo.username}></td> 
+                                <td class="center"><{$vo.address}></td>  
+                                <td class="center"><{$vo.ftime|date="Y-m-d H:i:s",###}></td>
+                                <td class="center">
+                                            <if condition="$vo.status eq 3"> 已过期                            
+                                            <elseif condition="$vo.status eq 2 "/>已完成
+                                            <else />进行中
+                                            </if>
+                                </td>
+                                <td class="center">
+                                    <a href="__APP__/Forms/details/form_number/<{$vo.form_number}>">详情</a>
+                                </td>
+                            </tr>
+                        </volist>
+                    </tbody>
+                </table>
+                
+               <!--  <div class="divider15"></div>
+               
+               <pre class="prettyprint linenums">//Include this script in your document &lt;head&gt;
+               &lt;script type=&quot;text/javascript&quot; src=&quot;js/jquery.dataTables.min.js&quot;&gt;&lt;/script&gt;</pre>
+               
+               <div class="divider15"></div>
+               
+               <pre class="prettyprint linenums">// dynamic table<br>jQuery('#dyntable').dataTable({
+                  &quot;sPaginationType&quot;: &quot;full_numbers&quot;,
+                  &quot;aaSortingFixed&quot;: [[0,'asc']],
+                  &quot;fnDrawCallback&quot;: function(oSettings) {
+                     jQuery.uniform.update();
+                  }<br>});<br></pre>
+                  
+                                <div class="divider15"></div>
+                  
+                                <pre class="prettyprint linenums">&lt;table class=&quot;table table-bordered&quot; id=&quot;dyntable&quot;&gt;</pre> -->
+                
+                
+            </div><!--contentinner-->
+        </div><!--maincontent-->
+        
+    </div><!--mainright-->
+    <!-- END OF RIGHT PANEL -->
+    
+    <div class="clearfix"></div>
+    
+    <div class="footer">
+        <div class="footerleft">快达租赁管理 v1.0</div>
+        <div class="footerright">&copy; twen_Yee </div>
+    </div><!--footer-->
+    
+</div><!--mainwrapper-->
+
+</body>
+</html>

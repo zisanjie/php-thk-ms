@@ -1,0 +1,129 @@
+<include file="Public:form.head" />
+<script>
+    $(function(){
+
+        $('.skin-color').click(function(){
+
+            $('head').append("<link id='skinstyle' rel='stylesheet' href='__PUBLIC__/Admin/tpl/css/style."+$(this).attr('href')+".css' type='text/css' />");   
+
+            $.post('__URL__/changecolor',{'color':$(this).attr('href')},function(data){
+                // alert(data);
+                        
+            });
+            return false;
+        });
+    });
+
+</script>
+<body onload = "startTime();">
+
+<div class="mainwrapper">
+    
+    <include file="Public:menu.body" />
+    
+    <!-- START OF RIGHT PANEL -->
+    <div class="rightpanel">
+        <include file="Public:users.body" /><!--右边头部-->
+        <div class="breadcrumbwidget">
+            <ul class="skins">
+                <li><a href="default" class="skin-color default"></a></li>
+                <li><a href="orange" class="skin-color orange"></a></li>
+                <li><a href="dark" class="skin-color dark"></a></li>
+                <li>&nbsp;</li>
+                <li class="fixed"><a href="" class="skin-layout fixed"></a></li>
+                <li class="wide"><a href="" class="skin-layout wide"></a></li>
+            </ul><!--skins-->
+            <ul class="breadcrumb">
+                <li><a href="__APP__/Index/main">Home</a> <span class="divider">/</span></li>
+                <li><a href="#">链接管理</a> <span class="divider">/</span></li>
+                <li class="active">添加链接</li>
+            </ul>
+        </div><!--breadcrumbs-->
+        <div class="pagetitle">
+            <h1>添加链接</h1> <span>用来添加友情链接</span>
+        </div><!--pagetitle-->
+        
+        <div class="maincontent">
+            <div class="contentinner">
+                <h4 class="widgettitle">添加链接</h4>
+                <div class="widgetcontent">
+                    <form class="stdform" action="__APP__/Friendlinks/ins" method="post" enctype="multipart/form-data">
+                         <p>
+                            <label>链接名称</label>
+                            <span class="field">
+                                <input type="text" name="title" class="input-xxlarge" placeholder="链接名称" />
+                            </span>
+                        </p>
+                        <p>
+                            <label>URL</label>
+                            <span class="field">
+                                <input type="text" name="url" class="input-xxlarge" placeholder="链接地址" />
+                            </span>
+                        </p>                        
+                        <p>
+                            <label>链接图片</label>
+                            <span class="field">                                
+                                <input type="file" name="pic" value="上传" class="uniform-file" />
+                            </span>
+                        </p>
+                        <!-- <p>
+                            <label>链接图片</label>
+                            <span class="field"><input type="text" name="pic" class="input-xxlarge" placeholder="pic" /></span>
+                        </p> -->
+                        <p>
+                            <label>链接类型</label>
+                            <span class="field">
+                                <select name="type" >
+                                    <option value="1">文字</option>
+                                    <option value="2">图片</option>
+                                </select>                                
+                            </span>
+                        </p>
+                        <p>
+                            <label>跳转方式</label>
+                            <span class="field">                                
+                                <select name="target" >
+                                    <option value="_parent">本页</option>
+                                    <option value="_blank">新页</option>
+                                </select>                                
+                            </span>
+                        </p>
+                        <p>
+                            <label>是否显示</label>
+                            <span class="field">
+                                    <select name="isallow" >
+                                        <option value="1">显示</option>
+                                        <option value="2">屏蔽</option>
+                                    </select>  
+                            </span>
+                        </p>
+                        <p>
+                            <label>链接描述</label>
+                            <span class="field">
+                                <textarea cols="80" rows="5" name="describe" class="span6" style="resize:none;"></textarea>
+                            </span> 
+                        </p>
+                         
+                        <p class="stdformbutton">
+                            <button class="btn btn-primary">Submit</button>
+                            <button type="reset" class="btn">Reset</button>
+                        </p>
+                    </form>  
+                </div><!--widgetcontent-->
+            </div><!--contentinner-->
+        </div><!--maincontent-->
+        
+    </div><!--mainright-->
+    <!-- END OF RIGHT PANEL -->
+    
+    <div class="clearfix"></div>
+    
+    <div class="footer">
+        <div class="footerleft">快达租赁管理 v1.0</div>
+        <div class="footerright">&copy; twen_Yee </div>
+    </div><!--footer-->
+
+    
+</div><!--mainwrapper-->
+</body>
+</html>

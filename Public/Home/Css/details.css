@@ -1,0 +1,53 @@
+#details{
+	height:auto;
+	overflow:hidden;
+}
+#details .left{
+	float:left;
+	height:auto;
+	overflow:hidden;
+	width:620px;
+	background:white;
+	margin:10px 0px 10px 10px;
+
+}
+
+#details .left .details_chicken{
+	margin-top:30px;
+	margin-bottom:20px;
+	border:6px solid #F5F5F5;
+	border-radius:2px;
+}
+
+#details .left .left_chicken_describe{
+	height:20px;
+	line-height:25px;
+}
+
+#details .left .left_dotted{
+	border-left:1px dotted #DDDDDD;
+}
+
+#details .left .left_solid{
+	border-left:1px solid #ddd;
+}
+
+#details .right{
+	float:left;
+	height:600px;;/**/
+	width:330px;
+	background:#0F91CF;
+	margin:10px 0px 10px 10px;
+	color:white;
+}
+
+#details .right .right_eva{
+	font-size:16px;
+	font-weight:bold;
+}
+
+#details .right .right_co{
+	height:20px;
+	line-height:25px;
+	font-size:13px;
+}

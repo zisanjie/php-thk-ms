@@ -1,0 +1,35 @@
+body{
+	background:url(../Imgs/bg.gif) repeat-x;
+}
+#logo{
+	width:60%;			
+	float:left;
+	height:90px;
+	line-height:90px;
+	text-align:center;
+	background:url(../Imgs/logo.png) no-repeat;
+}
+#banner{
+	width:40%;
+	height:90px;
+	background:url(../Imgs/bg_banner_menu.gif) no-repeat right top;
+	float:left;
+}
+
+#banner span{
+	float:right;
+	height:33px;
+	line-height:33px;
+	margin-right:5px;
+}
+
+#banner a{
+	color:white;
+	font-size:13px;
+}
+#opr{
+	width:100%;
+	height:30px;
+	line-height:30px;
+	background:url(../Imgs/bg_nav.gif) repeat-x;
+}

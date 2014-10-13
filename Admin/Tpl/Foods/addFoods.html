@@ -1,0 +1,113 @@
+<include file="Public:form.head" />
+<script>
+    $(function(){
+
+        $('.skin-color').click(function(){
+
+            $('head').append("<link id='skinstyle' rel='stylesheet' href='__PUBLIC__/Admin/tpl/css/style."+$(this).attr('href')+".css' type='text/css' />");   
+
+            $.post('__URL__/changecolor',{'color':$(this).attr('href')},function(data){
+                // alert(data);
+                        
+            });
+            return false;
+        });
+    });
+
+</script>
+<body onload = "startTime();">
+
+<div class="mainwrapper">
+    
+    <include file="Public:menu.body" />
+    
+    <!-- START OF RIGHT PANEL -->
+    <div class="rightpanel">
+        <include file="Public:users.body" /><!--右边头部-->
+        <div class="breadcrumbwidget">
+        	<ul class="skins">
+                <li><a href="default" class="skin-color default"></a></li>
+                <li><a href="orange" class="skin-color orange"></a></li>
+                <li><a href="dark" class="skin-color dark"></a></li>
+                <li>&nbsp;</li>
+                <li class="fixed"><a href="" class="skin-layout fixed"></a></li>
+                <li class="wide"><a href="" class="skin-layout wide"></a></li>
+            </ul><!--skins-->
+        	<ul class="breadcrumb">
+                <li><a href="__APP__/Index/main">Home</a> <span class="divider">/</span></li>
+                <li><a href="#">车辆管理</a> <span class="divider">/</span></li>
+                <li class="active">新品上架</li>
+            </ul>
+        </div><!--breadcrumbs-->
+        <div class="pagetitle">
+        	<h1>新品上架</h1> <span>用来添加车辆信息</span>
+        </div><!--pagetitle-->
+        
+        <div class="maincontent">
+        	<div class="contentinner">
+            	<h4 class="widgettitle">新品上架</h4>
+                <div class="widgetcontent">
+                	<form class="stdform" action="__APP__/Foods/ins" method="post" enctype="multipart/form-data">
+                        
+                        <p>
+                            <label>车辆名称</label>
+                            <span class="field"><input type="text" name="name" class="input-xxlarge" placeholder="车辆名称" /></span>
+                        </p>
+                        <p>
+                            <label>车辆价格</label>
+                            <span class="field"><input type="text" name="price" class="input-xxlarge" placeholder="车辆价格" /></span>
+                        </p>
+                        <p>
+                            <label>排序方式</label>
+                            <span class="field">
+                                <input type="text" name="orderno" class="input-xxlarge" placeholder="排序方式" />
+                            </span>
+                        </p>
+                        <p>
+                            <label>所属分类</label>
+                            <span class="field">
+                            <select name="cid" id="selection2" class="uniformselect">
+                                <!-- <option value="">请选择分类</option> -->
+                                <volist name="sdata" id="vo">
+                                    <option value="<{$vo.id}>"><{$vo.sname}></option>
+                                </volist>
+                            </select>
+                            </span>
+                        </p>                        
+                        <p>
+                            <label>车辆图片</label>
+                            <span class="field">                                
+                                <input type="file" name="pic" value="上传" class="uniform-file" />
+                            </span>
+                        </p>
+                       <p>
+                            <label>车辆描述</label>
+                            <span class="field">
+                                <textarea cols="80" rows="5" name="describe" class="span6" style="resize:none;" placeholder="车辆描述"></textarea>
+                            </span> 
+                        </p>
+                                     
+                        <p class="stdformbutton">
+                            <button class="btn btn-primary">Submit</button>
+                            <button type="reset" class="btn">Reset</button>
+                        </p>
+                           
+                    </form>  
+                </div><!--widgetcontent-->
+            </div><!--contentinner-->
+        </div><!--maincontent-->
+        
+    </div><!--mainright-->
+    <!-- END OF RIGHT PANEL -->
+    
+    <div class="clearfix"></div>
+    
+    <div class="footer">
+        <div class="footerleft">快达租赁管理 v1.0</div>
+        <div class="footerright">&copy; twen_Yee </div>
+    </div><!--footer-->
+
+    
+</div><!--mainwrapper-->
+</body>
+</html>

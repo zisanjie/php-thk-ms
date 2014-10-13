@@ -1,0 +1,299 @@
+
+<!doctype html>
+<include file="Public:header"/>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>用户中心</title>
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/Css/ucenter_index.css">
+	<script type="text/javascript" src="__PUBLIC__/Js/jquery-1.8.3.js"></script>
+
+</head>
+
+<script type="text/javascript">
+		$(function(){
+			//获取当前url
+			var url = window.location.pathname;
+					
+			$('#main_right .oper div').hide();
+			$('#main_right .oper div :input').not($(':submit,:reset,:button')).addClass('inp24');
+			// $('#main_right .oper div :submit').addClass('but25'); //为提交按钮统一添加样式
+
+			$('#main_right .oper div td:even').attr({'height':'30px'});
+
+			if(url.search(/pass/i)>-1){
+
+				var $oper = $('#main_right .oper .pass');
+				$oper.show();	
+				$("#index_main .left_down .mpass").css({'color':'black'});
+				$('#navInfo').text('单位资料信息');	
+			}else if(url.search(/address/i)>-1){
+
+				var $oper = $('#main_right .oper .address');
+				$oper.show();
+				$("#index_main .left_down .maddress").css({'color':'black'});
+				$('#navInfo').text('订车地址信息');	
+			}else if(url.search(/histroy/i)>-1){
+
+				var $oper = $('#main_right .oper .histroy');
+				$oper.show();
+				$("#index_main .left_down .mhistroy").css({'color':'black'});
+				$('#navInfo').text('查看订车历史');	
+			}else if(url.search(/money/i)>-1){
+
+				var $oper = $('#main_right .oper .money');
+				$oper.show();
+				$("#index_main .left_down .mmoney").css({'color':'black'});
+				$('#navInfo').text('修改用户密码');	
+			}else if(url.search(/header/i)>-1){
+
+				var $oper = $('#main_right .oper .header');
+				$oper.show();
+				$("#index_main .left_down .mheader").css({'color':'black'});
+				$('#navInfo').text('修改用户介绍');	
+			}else{
+
+			}
+
+
+
+			var maxLength = 108;
+			//限制输入框中字的长度，未完成
+			$("#address").keydown(function(){
+				var curLength = $("#address").val().length;	
+				if(curLength>=maxLength){
+					var num=$("#address").val().substr(0,maxLength-1);
+					$("#address").val(num);
+				} 
+			});			
+
+		});
+</script>
+<script type="text/javascript">
+		$(function(){
+			$('#regSubmit').submit(function(){
+				
+				var userpwd = $('#regSubmit .userpwd').val();
+				var ruserpwd = $('#regSubmit .ruserpwd').val();
+
+				if('' == userpwd || userpwd != ruserpwd || ('' != userpwd && !/^[a-z0-9_-]{6,18}$/.test(userpwd))){
+					alert('密码格式不正确!');
+					return false;
+				}			
+			});
+
+
+			$('#regSubmit .userpwd').blur(function(){
+				var userpwd = $('#regSubmit .userpwd').val();
+				$(this).parent().next().children().remove();
+
+				if('' == userpwd || ('' != userpwd && !/^[a-z0-9_-]{6,18}$/.test(userpwd))){
+					
+					$(this).parent().next().append('<font color="red">密码格式不正确</font>');
+				}else{
+					$(this).parent().next().append('<font color="green">格式输入正确</font>');
+				}
+			});
+
+			$('#regSubmit .ruserpwd').blur(function(){
+				var userpwd = $('#regSubmit .userpwd').val();
+				var ruserpwd = $('#regSubmit .ruserpwd').val();
+				$(this).parent().next().children().remove();
+
+				if('' == userpwd || userpwd != ruserpwd || ('' != userpwd && !/^[a-z0-9_-]{6,18}$/.test(userpwd))){
+					
+					$(this).parent().next().append('<font color="red">两次密码不一致</font>');
+				}else{
+					$(this).parent().next().append('<font color="green">输入正确</font>');
+				}
+			});
+
+			var href = $('#page a');
+
+			for(var i=0; i<href.length;i++){
+				
+				$(href[i]).attr({href:$(href[i]).attr('href')+'/histroy'});
+			}
+		});
+</script>
+<body>
+	<div id="index_main">
+		<div class="main_left">
+<!-- 			<div class="left_top">
+	<img src="__ROOT__/Uploads/Users/thumb/th_<{$Think.session.uheadpic}>" style="width:200px; height:200px">
+</div> -->
+			<div class="left_down">
+				<ul>
+					<a href="__URL__/index/pass" class="mpass"><li>单位资料</li></a>
+					<a href="__URL__/index/address" class="maddress"><li>订车地址</li></a>
+					<a href="__URL__/index/histroy" class="mhistroy"><li>订单历史</li></a>
+					<a href="__URL__/index/money" class="mmoney"><li>修改密码</li></a>
+					<a href="__URL__/index/header" class="mheader"><li>单位介绍</li></a>
+				</ul>
+			</div>
+		</div>
+		<div id="main_right" class="main_right">
+			<div class="nav">
+		                    <img class="nav_o" src="__PUBLIC__/Home/Imgs/orders_actions_icon.gif">
+		                    <span id="navInfo">个人资料</span>
+		            </div>
+			<div class="oper">
+				<form action="__APP__/Dcenter/update" method="post" id="upSubmit">
+					<div class="pass">
+<!-- 						<p>
+	<label>当前头像：</label>
+	<span>
+		<img src="__ROOT__/Uploads/Users/thumb/th_<{$Think.session.uheadpic}>" style="width:85px;height:85px">
+	</span>
+</p> -->
+						<p>
+							<label>
+							昵&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;称：<b style="color:#992222;margin-left:10px;">
+								<{$Think.session.uname}>
+							</b></label>	
+						</p>
+
+						<p>
+							<label>
+							单位&nbsp;名称：<b style="color:#992222;margin-left:10px;">
+								<{$Think.session.dname}>
+							</b></label>	
+						</p>
+						<p>
+							<label>
+							积&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;分：<b style="color:#992222;margin-left:10px;">
+								<{$Think.session.umoney}>
+							</b></label>	
+						</p>
+						<p>
+							<label>
+							负&nbsp;&nbsp;责&nbsp;&nbsp;人：
+							<input style="margin-left:10px;" type="text" name="truename" value="<{$Think.session.utruename}>" class="input500" />
+							</label>	
+						</p>
+						<p>
+							<label>电&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;话：
+							<input style="margin-left:10px;" type="text" name="phone" value="<{$Think.session.uphone}>" class="phone" />
+							</label>
+						</p>
+						<p>
+							<label>合&nbsp;作酒&nbsp;店：
+							<input style="margin-left:10px;" type="text" name="hotel" value="<{$Think.session.uhotel}>"/>
+							</label>
+						</p>
+						<p style="height:50px;">
+							<input type="hidden" name="id" value="<{$Think.session.uid}>" />
+							<button class="butAdd" style="margin-top:20px;margin-left:100px;" type="submit">保存</button>
+						</p>
+					</div>
+				</form>
+				<form action="__APP__/Dcenter/upaddress" method="post">
+					<div class="address">
+						<p>
+							<label>订&nbsp;&nbsp;车&nbsp;&nbsp;人&nbsp;&nbsp;姓&nbsp;&nbsp;名：
+							<input class="input500" style="margin-left:11px;" type="text" name="truename" value="<{$Think.session.utruename}>" readonly>
+							</label>
+						</p>
+						<p>
+							<label>车&nbsp;辆&nbsp;送&nbsp;达&nbsp;地&nbsp;址：
+							<input class="input500" style="margin-left:11px;" type="text" name="address" value="<{$Think.session.uaddress}>">
+							</label>	
+						</p>
+						
+						<p style="height:50px;">
+							<input type="hidden" name="id" value="<{$Think.session.uid}>" />
+							<button class="butAdd" style="margin-top:20px;margin-left:100px;" type="submit">保存</button>
+						</p>
+					</div>
+				</form>
+					<div class="histroy">
+						<!-- <center><h4>历史订单</h4></center> -->
+				                <table width="100%" cellspacing="0" cellpadding="0" align="center">
+				                        <tr>
+				                            <th style="text-align:left;text-indent:3em;">订单号</th>
+				                            <th>电话号码</th>
+				                            <th>接车地址</th> 
+				                            <th>订车时间</th>
+				                            <th>订车状态</th>
+				                            <th>订单详情</th>
+				                        </tr>				                    
+				                        <volist name="data" id="vo">
+				                            <tr>
+				                                <td style="text-align:left;">
+				                                <{$vo.form_number}></td>
+				                                <td><{$vo.phone}></td> 
+				                                <td><{$vo.address}></td>  
+				                                <td>
+				                                		<{$vo.ftime|date="Y-m-d H:i:s",###}>
+				                                </td>
+				                                <td>
+				                                		<if condition="$vo.status eq 3"> 已过期                     		
+								<elseif condition="$vo.status eq 2 "/>已完成
+								<else />进行中
+								</if>
+				                                </td>		            
+				                                <td>
+				                                    <a href="__APP__/Posts/details/form_number/<{$vo.form_number}>" target="__blank">查看</a>
+				                                </td>
+				                            </tr>
+				                        </volist>
+				                        <tr>
+				                        	<td colspan="6" id="page">
+				                        		共<{$page}>
+				                        	</td>
+				                        </tr>   
+                				   </table>
+					</div>					
+					<div class="money">
+						<form action="__APP__/Dcenter/alterpwd/" method="post" id="regSubmit">
+						<table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-top:50px;">
+						<tr>
+							<td width="80" align="center">邮　　箱</td>
+							<td width="350">
+								<input type="text" name="email" class="email input500" value="<{$Think.session.uemail}>" readonly />
+							</td>
+							<td></td>
+							</tr> 
+							<tr>
+								<td align="center" width="80">密　　码</td>
+								<td width="350">
+									<input type="password" name="userpwd" class="userpwd input500" />
+								</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td align="center">确认密码</td>
+								<td>
+									<input type="password" name="ruserpwd" class="ruserpwd input500" />
+								</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td colspan="3">
+									<input type="hidden" name="id" value="<{$Think.session.uid}>">
+									<button class="butAdd" style="margin-top:20px;margin-left:100px;" type="submit">修改</button>
+								</td>
+							</tr>
+						</table>
+					</form>	
+				</div>
+				<div class="header">
+				<form action="__APP__/Dcenter/upabout" method="post">
+					<p style="margin-top:40px;">						
+						<label>单位介绍：
+						<textarea style="margin-left:60px;margin-top:20px;height:80px;width:550px;" name="about" value="<{$Think.session.utruename}>"><{$Think.session.uabout}></textarea></label>	
+					</p>
+					<p>
+						<input type="hidden" name="id" value="<{$Think.session.uid}>">
+						<button class="butAdd" style="margin-top:20px;margin-left:10px;" type="submit">修改</button>
+					</p>
+				</form>
+
+					
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+<include file="Public:footer"/>

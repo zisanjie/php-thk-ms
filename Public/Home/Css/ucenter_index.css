@@ -1,0 +1,121 @@
+#index_main{
+	width:980px;
+	min-height:400px;
+	overflow:hidden;
+	/*border:red 1px solid;*/
+	margin:0px auto;
+	background:white;
+	border:#D9D9D9 1px solid;
+	border-radius:5px;
+	}
+.main_left{
+	float:left;
+	width:200px;
+	height:500px;
+	border:2px solid #E8E6E3;
+	background:#F5F4F2;
+}
+.left_top{
+	width:200px;
+	height:200px;
+	border:1px solid #E8E6E3;
+}
+.left_down ul{
+	margin-top: 20px;
+	list-style:none;
+}
+.left_down ul li{
+	margin-left: -40px;
+	padding-left: 80px;
+	height:35px;
+	line-height:35px;
+}
+.left_down ul li:hover{
+	background:#E8E6E3;
+}
+.main_right{
+	float:left;
+	width:700px;
+	height:500px;
+	margin-left:40px;
+}
+.main_right .pass p{
+	line-height:25px;
+}
+.main_right .pass label{
+	display:block;
+	margin-top:20px;
+	font-size:13px;
+}
+.main_right .pass span{
+	border:3px solid #e6e6e6;
+	display:inline-block;
+	height:85px;
+	width:85px;
+	margin-left:80px;
+	margin-top:-30px;
+}
+.main_right .address p{
+	height:60px;
+	line-height:60px;
+}
+.main_right .address label{
+	display:block;
+	margin-top:20px;
+	font-size:13px;
+}
+.main_right .address span{
+	display:inline-block;
+	height:85px;
+	width:85px;
+	margin-left:80px;
+	margin-top:-30px;
+}
+
+.histroy table td,.histroy table th{
+	border-bottom:#F5F4F2 1px solid;
+	font-size:13px;
+	text-align:center;
+	height:35px;
+	line-height:35px;
+}
+
+.histroy table td{
+	color:#555555;
+}
+
+.histroy table th{
+	color:#333333;
+}
+
+
+.money td{
+	height:60px;
+	line-height:60px;
+	font-size:13px;
+}
+
+.header {
+	text-align:left;	
+	text-indent:4em;	
+}
+
+#index_main .nav{
+	margin:10px auto;
+	width:710px;
+	height:35px;
+	line-height:35px;
+	border-radius:5px;
+	background:#F5F5F5;
+	border:#D9D9D9 1px solid;
+}
+
+#index_main .nav .nav_o{
+	margin-left:10px;
+}
+
+#index_main .nav span{
+	font-size:13px;
+	font-weight:bold;
+	position:relative;
+}

@@ -1,0 +1,19 @@
+#footer{
+	width:980px;
+	min-height:50px;
+	margin:10px 0px 10px 320px;
+}
+#footer span{
+	font-size:12px;
+	color:#909090;
+}
+#footer a{
+	color:#992222;
+	text-decoration:none;
+}
+#footer .footer_left{
+	float:left;
+}
+#footer .footer_right{
+	float:right;
+}

@@ -1,0 +1,130 @@
+<include file="Public:form.head" />
+<script>
+    $(function(){
+
+        $('.skin-color').click(function(){
+
+            $('head').append("<link id='skinstyle' rel='stylesheet' href='__PUBLIC__/Admin/tpl/css/style."+$(this).attr('href')+".css' type='text/css' />");   
+
+            $.post('__URL__/changecolor',{'color':$(this).attr('href')},function(data){
+                // alert(data);
+                        
+            });
+            return false;
+        });
+    });
+
+</script>
+<body onload = "startTime();">
+
+<div class="mainwrapper">
+    
+    <include file="Public:menu.body" />
+    
+    <!-- START OF RIGHT PANEL -->
+    <div class="rightpanel">
+        <include file="Public:users.body" /><!--右边头部-->
+        <div class="breadcrumbwidget">
+            <ul class="skins">
+                <li><a href="default" class="skin-color default"></a></li>
+                <li><a href="orange" class="skin-color orange"></a></li>
+                <li><a href="dark" class="skin-color dark"></a></li>
+                <li>&nbsp;</li>
+                <li class="fixed"><a href="" class="skin-layout fixed"></a></li>
+                <li class="wide"><a href="" class="skin-layout wide"></a></li>
+            </ul><!--skins-->
+            <ul class="breadcrumb">
+                <li><a href="__APP__/Index/main">Home</a> <span class="divider">/</span></li>
+                <li><a href="#">站点管理</a> <span class="divider">/</span></li>
+                <li class="active">网站配置</li>
+            </ul>
+        </div><!--breadcrumbs-->
+        <div class="pagetitle">
+            <h1>网站配置</h1> <span>用来修改网站配置信息</span>
+        </div><!--pagetitle-->
+        
+        <div class="maincontent">
+            <div class="contentinner">
+                <h4 class="widgettitle">网站配置</h4>
+                <div class="widgetcontent">
+                    <form class="stdform" action="__APP__/Webconfig/mod" method="post" enctype="multipart/form-data" >
+                        
+                        <p>
+                            <label>网站名称</label>
+                            <span class="field">
+                                <input type="text" name="title" class="input-xxlarge" value="<{$data.title}>" />
+                                <br />站点名称，将显示在浏览器窗口标题等位置
+                            </span>
+                        </p>
+                        <p>
+                            <label>关键字</label>
+                            <span class="field">
+                                <input type="text" name="keywords" class="input-xxlarge" value="<{$data.keywords}>" />
+                                <br />网站名称，将显示在页面底部的联系方式处
+                            </span>
+                        </p>
+                        <p>
+                            <label>公司地址</label>
+                            <span class="field">
+                                <input type="text" name="address" class="input-xxlarge" value="<{$data.address}>" />
+                                <br />网站 URL，将作为链接显示在页面底部
+                            </span>
+                        </p>
+                        <p>
+                            <label>备案信息</label>
+                            <span class="field">
+                                <input type="text" name="icpno" class="input-xxlarge"  value="<{$data.icpno}>" />
+                                <br />页面底部可以显示 ICP 备案信息
+                            </span>
+                        </p>
+                        <p>
+                            <label>联系方式</label>
+                            <span class="field">
+                                <input type="text" name="contact" class="input-xxlarge" value="<{$data.contact}>" />
+                                <br />网站名称，将显示在页面底部的联系方式处
+                            </span>
+                        </p>
+                        <p>
+                            <label>管理员邮箱</label>
+                            <span class="field">
+                                <input type="text" name="email" class="input-xxlarge" value="<{$data.email}>" />
+                                <br />mail，将作为系统发邮件的时候的发件人地址
+                            </span>
+                        </p>
+                        <p>
+                            <label>网站logo</label>
+                            <span class="field">                                
+                                <input type="file" name="logo" value="上传" class="uniform-file" />
+                                <img src="__ROOT__/Uploads/thumb/th_<{$data.logo}>" alt="图片不存在" height="45">
+                            </span>
+                        </p>
+                        <p>
+                            <label>网站描述</label>
+                            <span class="field">
+                                <textarea cols="80" rows="5" name="description" class="span6" style="resize:none;"><{$data.description}></textarea>
+                            </span> 
+                        </p>                                     
+                        <p class="stdformbutton">
+                            <button class="btn btn-primary">Submit</button>
+                            <button type="reset" class="btn">Reset</button>
+                        </p>
+                           
+                    </form>  
+                </div><!--widgetcontent-->
+            </div><!--contentinner-->
+        </div><!--maincontent-->
+        
+    </div><!--mainright-->
+    <!-- END OF RIGHT PANEL -->
+    
+    <div class="clearfix"></div>
+    
+    <div class="footer">
+        <div class="footerleft">快达租赁管理 v1.0</div>
+        <div class="footerright">&copy; twen_Yee </div>
+    </div><!--footer-->
+
+    
+</div><!--mainwrapper-->
+</body>
+</html>

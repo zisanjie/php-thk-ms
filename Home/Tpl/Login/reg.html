@@ -1,0 +1,269 @@
+<!doctype html>
+<include file="Public:header"/>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>reg index</title>
+	<link href="__PUBLIC__/Home/Css/reg.css" rel="stylesheet" type="text/css" />
+	<script src="__PUBLIC__/Js/jquery-1.8.3.js"></script>
+	
+	<script type="text/javascript">
+		$(function(){
+			$('#regSubmit').submit(function(){
+				var email = $('#regSubmit .email').val();
+				var userpwd = $('#regSubmit .userpwd').val();
+				var ruserpwd = $('#regSubmit .ruserpwd').val();
+				var username = $('#regSubmit .username').val();
+				var truename = $('#regSubmit .truename').val();
+				var address = $('#regSubmit .address').val();
+				var phone = $('#regSubmit .phone').val();
+
+				if('' == email || ('' != email && !/\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/.test(email))){
+					alert('邮箱不正确!');
+					return false;
+				}
+
+				if('' == userpwd || userpwd != ruserpwd || ('' != userpwd && !/^[a-z0-9_-]{6,18}$/.test(userpwd))){
+					alert('密码不正确!');
+					return false;
+				}
+
+				if('' == username || ('' != username && !/^[a-zA-Z0-9_-]{3,16}$/.test(username))){
+					alert('昵称不正确!请输入数字和字母的组合');
+					return false;
+				}
+				if('' == truename || ('' != truename && /^[a-zA-Z0-9_-]{0,16}$/.test(truename))){
+					alert('姓名不正确!请输入汉字');
+					return false;
+				}
+				if('' == address){
+					alert('地址不为空!');
+					return false;
+				}
+				if('' == phone || ('' != phone && !/^1[0-9]{10}$/.test(phone))){
+					alert('手机号1开头共11位!');
+					return false;
+				}			
+			});
+
+			$('#regSubmit .email').blur(function(){
+				var email = $('#regSubmit .email').val();
+				$(this).parent().next().children().remove();
+
+				if('' == email || ('' != email && !/\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/.test(email))){
+					
+					$(this).parent().next().append('<font color="red">邮箱不正确</font>');
+					return false;
+				}
+				
+				var $parent = $(this).parent().next();
+				$.post('__APP__/Login/yzemail/',{email:email},function(jdata){
+
+					 	// var data = eval("("+jdata+")");//AJAX返回传来的值是JSON形式的数据，用eval转码
+					 	var data = jdata;
+					 	var exist = '';
+
+					 	if(data.data=="exist"){
+						     exist = '<font color="red">该邮箱已被注册.</font>';
+						     	
+						}else{
+							exist = '<font color="green">该邮箱可用.</font>';
+						}
+
+						$parent.append(exist);
+				});  
+
+			});
+
+			$('#regSubmit .userpwd').blur(function(){
+				var userpwd = $('#regSubmit .userpwd').val();
+				$(this).parent().next().children().remove();
+
+				if('' == userpwd || ('' != userpwd && !/^[a-z0-9_-]{6,18}$/.test(userpwd))){
+					
+					$(this).parent().next().append('<font color="red">密码6-18位</font>');
+				}else{
+					$(this).parent().next().append('<font color="green">密码格式正确</font>');
+				}
+			});
+
+			$('#regSubmit .ruserpwd').blur(function(){
+				var userpwd = $('#regSubmit .userpwd').val();
+				var ruserpwd = $('#regSubmit .ruserpwd').val();
+				$(this).parent().next().children().remove();
+
+				if('' == userpwd || userpwd != ruserpwd || ('' != userpwd && !/^[a-z0-9_-]{6,18}$/.test(userpwd))){
+					
+					$(this).parent().next().append('<font color="red">两次密码不一致</font>');
+				}else{
+					$(this).parent().next().append('<font color="green">密码输入正确</font>');
+				}
+			});
+
+			$('#regSubmit .username').blur(function(){
+				var username = $('#regSubmit .username').val();
+				$(this).parent().next().children().remove();
+
+				if('' == username || ('' != username && !/^[a-zA-Z0-9_-]{3,16}$/.test(username))){
+					
+					$(this).parent().next().append('<font color="red">昵称为数字,字母组合</font>');
+					return false;
+				}
+
+				var $parent = $(this).parent().next();
+				//AJAX连接数据库判断用户是否存在				
+				 $.post('__APP__/Login/yzuser/',{username:username},function(data){
+				 	// var data = eval("("+jdata+")");//AJAX返回传来的值是JSON形式的数据，用eval转码
+				 	
+				 	var exist;
+
+				 	if(data.data=="exist"){
+					     exist = '<font color="red">该昵称已存在.</font>';
+					}else{
+					     exist = '<font color="green">该昵称可用.</font>';
+					}
+
+					$parent.append(exist);
+				});
+			});	
+			$('#regSubmit .truename').blur(function(){
+				var truename = $('#regSubmit .truename').val();
+				$(this).parent().next().children().remove();
+
+				if('' == truename || ('' != truename && /^[a-zA-Z0-9_-]{0,16}$/.test(truename))){
+					
+					$(this).parent().next().append('<font color="red">姓名为汉字</font>');
+					return false;
+				}else{
+					$(this).parent().next().append('<font color="green">姓名正确.</font>');
+				}
+				});	
+
+				$('#regSubmit .address').blur(function(){
+				var address = $('#regSubmit .address').val();
+				$(this).parent().next().children().remove();
+
+				if('' == address){
+					
+					$(this).parent().next().append('<font color="red">地址不正确</font>');
+					return false;
+				}else{
+					$(this).parent().next().append('<font color="green">地址正确</font>');
+				}
+				});	
+
+				$('#regSubmit .phone').blur(function(){
+				var phone = $('#regSubmit .phone').val();
+				$(this).parent().next().children().remove();
+
+				if('' == phone || ('' != phone && !/^1[0-9]{10}$/.test(phone))){
+					
+					$(this).parent().next().append('<font color="red">手机号1开头共11位</font>');
+					return false;
+				}else{
+					$(this).parent().next().append('<font color="green">手机号正确</font>');
+				}
+				});		
+		});
+	</script>
+</head>
+<body>
+	<div id="reg_wrap">
+		<h2>注册一个新的帐号</h2>
+		<div id="reg_content">
+			<form action="__APP__/Login/checkReg/" method="post" id="regSubmit">
+				<table  cellpadding="0" cellspacing="0" border="0" style="margin-left:150px;">
+					<tr>
+						<td width="100" align="center">邮　　箱
+						<font color="red">*</font>
+						</td>
+						<td width="200">
+						<input type="text" name="email" class="email input500"></td>
+						<td style="text-indent:1em;"></td>
+					</tr>
+					<tr>
+						<td align="center">
+						密　　码
+						<font color="red">*</font>
+						</td>
+						<td><input type="password" name="userpwd" class="userpwd input500"></td>
+						<td style="text-indent:1em;"></td>
+					</tr>
+					<tr>
+						<td align="center">
+						确认密码
+						<font color="red">*</font>
+						</td>
+						<td><input type="password" name="ruserpwd" class="ruserpwd input500"></td>
+						<td style="text-indent:1em;"></td>
+					</tr>
+					<tr>
+						<td align="center">
+						昵　　称
+						<font color="red">*</font>
+						</td>
+						<td><input type="text" name="username" class="username input500"></td>
+						<td style="text-indent:1em;">
+							
+						</td>
+					</tr>
+					<tr>
+						<td align="center">
+						真实姓名
+						<font color="red">*</font>
+						</td>
+						<td><input type="text" name="truename" class="truename input500"></td>
+						<td style="text-indent:1em;">
+							
+						</td>
+					</tr>
+					<tr>
+						<td align="center">
+						地　　址
+						<font color="red">*</font>
+						</td>
+						<td><input type="text" name="address" class="address input500"></td>
+						<td style="text-indent:1em;">
+							
+						</td>
+					</tr>
+					<tr>
+						<td align="center">
+						手　　机
+						<font color="red">*</font>
+						</td>
+						<td><input type="text" name="phone" class="phone input500"></td>
+						<td style="text-indent:1em;">
+							
+						</td>
+					</tr>
+					<tr>
+						<td align="center">
+						验证码
+						</td>
+						<td><input type="text" name="verify" class=" input500" style="width:100px;"><img src='__APP__/Login/verify/' onClick="changeImg(this)"/></td>
+						<td style="text-indent:1em;">
+						</td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td>
+							<button type="submit" class="butAdd" style="margin-top:-110px;margin-left:420px;">
+							注册
+							</button>
+						</td>
+					</tr>
+				</table>
+			</form>	
+		</div>		
+	</div>
+</body>
+</html>
+<script>
+			function changeImg(obj){
+				obj.src = '__APP__/Login/verify/'+Math.random();
+			}
+
+		</script>
+
+<include file="Public:footer"/>

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>InShare_Admin</title>
+<link rel="stylesheet" href="__PUBLIC__/Admin/tpl/css/style.default.css" type="text/css" />
+<link rel="stylesheet" href="__PUBLIC__/Admin/tpl/prettify/prettify.css" type="text/css" />
+<link rel="stylesheet" href="__PUBLIC__/Admin/tpl/css/style.<{$Think.session.color}>.css" type="text/css" />
+<script type="text/javascript" src="__PUBLIC__/Admin/tpl/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Admin/tpl/js/jquery-migrate-1.1.1.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Admin/tpl/js/jquery-ui-1.9.2.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Admin/tpl/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Admin/tpl/js/jquery.uniform.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Admin/tpl/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Admin/tpl/prettify/prettify.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Admin/tpl/js/jquery.cookie.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Admin/tpl/js/custom.js"></script>
+</head>
+
+<body>
+
+<div class="mainwrapper">
+	
+    <!-- START OF LEFT PANEL -->
+    <div class="leftpanel">
+    	
+        <div class="logopanel">
+        	<h1><a href="dashboard.html">InShare <span>v1.0</span></a></h1>
+        </div><!--logopanel-->
+        
+        <div class="datewidget">Today is Tuesday, Dec 25, 2012 5:30pm</div>
+    
+    	<div class="searchwidget">
+        	<form action="results.html" method="post">
+            	<div class="input-append">
+                    <input type="text" class="span2 search-query" placeholder="Search here...">
+                    <button type="submit" class="btn"><span class="icon-search"></span></button>
+                </div>
+            </form>
+        </div><!--searchwidget-->
+        
+  
+        
+        <div class="leftmenu">        
+             <ul class="nav nav-tabs nav-stacked">
+                <li class="nav-header">主菜单</li>
+                <li><a href="__APP__/Index/main"><span class="icon-home"></span> 控制面板</a></li>
+                <!-- <li><a href="media.html"><span class="icon-picture"></span> Media</a></li> -->
+                <li class="dropdown"><a href=""><span class="icon-user"></span> 用户管理</a>
+                    <ul>
+                        <li><a href="__APP__/User/index">用户列表</a></li>
+                        <li><a href="__APP__/User/add">添加用户</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a href=""><span class="icon-th-list"></span> 分类管理</a>
+                    <ul>
+                        <li><a href="__APP__/Bclass/index">分类列表</a></li>
+                        <li><a href="__APP__/Bclass/add">添加分类</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a href=""><span class="icon-th"></span> 分区管理</a>
+                    <ul>
+                        <li><a href="__APP__/Sclass/index">分区列表</a></li>
+                        <li><a href="__APP__/Sclass/add">添加分区</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a href=""><span class="icon-file"></span> 文档管理</a>
+                    <ul>
+                        <li><a href="__APP__/Doc/index">文档列表</a></li>
+                        <li><a href="__APP__/Dock/index">文档审核</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a href=""><span class="icon-bell"></span> 文档反馈</a>
+                    <ul>
+                        <li><a href="__APP__/Fback/index">反馈列表</a></li>
+                        <li><a href="__APP__/Fback/check">反馈审核</a></li>
+                    </ul>
+                </li>
+                <li class="active dropdown"><a href=""><span class="icon-comment"></span> 网站评论</a>
+                    <ul style="display:block;">
+                        <li><a href="__APP__/Webcom/index">评论列表</a></li>
+                        <li><a href="__APP__/Reply/index">回复列表</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a href=""><span class="icon-picture"></span> 广告管理</a>
+                    <ul>
+                        <li><a href="__APP__/Adv/index">广告列表</a></li>
+                        <li><a href="__APP__/Adv/add">添加广告</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a href=""><span class="icon-ban-circle"></span> 禁止登录</a>
+                    <ul>
+                        <li><a href="__APP__/Forbidip/index">IP列表</a></li>
+                        <li><a href="__APP__/Forbidip/add">添加IP</a></li>
+                    </ul>
+                </li>
+                <li><a href="__APP__/Res/index"><span class="icon-trash"></span> 回收管理</a></li>
+
+                <li class="dropdown"><a href=""><span class="icon-globe"></span> 友情链接</a>
+                    <ul>
+                        <li><a href="__APP__/Flink/index">链接列表</a></li>
+                        <li><a href="__APP__/Flink/add">添加链接</a></li>
+                    </ul>
+                </li>
+                <li><a href="__APP__/Webconfig/index"><span class="icon-wrench"></span> 网站配置</a></li>
+            </ul>
+        </div><!--leftmenu-->
+        
+    </div><!--mainleft-->
+    <!-- END OF LEFT PANEL -->
+    
+    <!-- START OF RIGHT PANEL -->
+    <div class="rightpanel">
+    	<div class="headerpanel">
+        	<a href="" class="showmenu"></a>
+            
+            <div class="headerright">
+            	<div class="dropdown notification">
+                    <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="/page.html">
+                    	<span class="iconsweets-globe iconsweets-white"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                    	<li class="nav-header">Notifications</li>
+                        <li>
+                        	<a href="">
+                        	<strong>3 people viewed your profile</strong><br />
+                            <img src="img/thumbs/thumb1.png" alt="" />
+                            <img src="img/thumbs/thumb2.png" alt="" />
+                            <img src="img/thumbs/thumb3.png" alt="" />
+                            </a>
+                        </li>
+                        <li><a href=""><span class="icon-envelope"></span> New message from <strong>Jack</strong> <small class="muted"> - 19 hours ago</small></a></li>
+                        <li><a href=""><span class="icon-envelope"></span> New message from <strong>Daniel</strong> <small class="muted"> - 2 days ago</small></a></li>
+                        <li><a href=""><span class="icon-user"></span> <strong>Bruce</strong> is now following you <small class="muted"> - 2 days ago</small></a></li>
+                        <li class="viewmore"><a href="">View More Notifications</a></li>
+                    </ul>
+                </div><!--dropdown-->
+                
+    			<div class="dropdown userinfo">
+                    <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="/page.html">Hi, ThemePixels! <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="editprofile.html"><span class="icon-edit"></span> Edit Profile</a></li>
+                        <li class="divider"></li>
+                        <li><a href=""><span class="icon-wrench"></span> Account Settings</a></li>
+                        <li><a href=""><span class="icon-eye-open"></span> Privacy Settings</a></li>
+                        <li class="divider"></li>
+                        <li><a href="index.html"><span class="icon-off"></span> Sign Out</a></li>
+                    </ul>
+                </div><!--dropdown-->
+    		
+            </div><!--headerright-->
+            
+    	</div><!--headerpanel-->
+        <div class="breadcrumbwidget">
+        	<ul class="skins">
+                <li><a href="default" class="skin-color default"></a></li>
+                <li><a href="orange" class="skin-color orange"></a></li>
+                <li><a href="dark" class="skin-color dark"></a></li>
+                <li>&nbsp;</li>
+                <li class="fixed"><a href="" class="skin-layout fixed"></a></li>
+                <li class="wide"><a href="" class="skin-layout wide"></a></li>
+            </ul><!--skins-->
+        	<ul class="breadcrumb">
+                <li><a href="dashboard.html">Home</a> <span class="divider">/</span></li>
+                <li><a href="table-static.html">网站评论</a> <span class="divider">/</span></li>
+                <li class="active">回复列表</li>
+            </ul>
+        </div><!--breadcrumbs-->
+        <div class="pagetitle">
+        	<h1>回复列表</h1> <span>用来显示所有管理员的回复相关信息</span>
+        </div><!--pagetitle-->
+        
+        <div class="maincontent">
+        	<div class="contentinner">
+            
+            	<h4 class="widgettitle">回复列表</h4>
+            	<table class="table table-bordered" id="dyntable">
+                    <colgroup>
+                        <col class="con0" style="align: center; width: 4%" />
+                        <col class="con1" />
+                        <col class="con0" />
+                        <col class="con1" />
+                        <col class="con0" />
+                        <col class="con1" />
+                    </colgroup>
+                    <thead>
+                        <tr>
+                          	<th class="head0 nosort"><input type="checkbox" class="checkall" /></th>
+                            <th class="center">ID</th>
+                            <th class="center">评论时间</th>
+                            <th class="center">评论内容</th>
+                            <th class="center">删除</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    	<volist name="data" id="vo">
+	                        <tr class="gradeX">
+	                            <td class="aligncenter">
+	                                <span class="center">
+	                                    <input type="checkbox" />
+	                                </span>
+	                            </td>
+	                            <td class="center"><{$vo.id}></td>
+	                            <td class="center"><{$vo.time}></td>
+	                            
+	                            <td class="center"><{$vo.content}></td>
+	                            
+	                            <td class="center">
+	                             	<a href="__APP__/Reply/do_del/id/<{$vo.id}>" onclick="return confirm('你确定要删除吗?');">
+	                             		<span class="icon-remove"></span>
+	                             	</a>
+
+	                            </td>
+	                        </tr>
+	                    </volist>
+                    </tbody>
+                </table>
+                
+               <!--  <div class="divider15"></div>
+               
+               <pre class="prettyprint linenums">//Include this script in your document &lt;head&gt;
+               &lt;script type=&quot;text/javascript&quot; src=&quot;js/jquery.dataTables.min.js&quot;&gt;&lt;/script&gt;</pre>
+               
+               <div class="divider15"></div>
+               
+               <pre class="prettyprint linenums">// dynamic table<br>jQuery('#dyntable').dataTable({
+                  &quot;sPaginationType&quot;: &quot;full_numbers&quot;,
+                  &quot;aaSortingFixed&quot;: [[0,'asc']],
+                  &quot;fnDrawCallback&quot;: function(oSettings) {
+                     jQuery.uniform.update();
+                  }<br>});<br></pre>
+                  
+                  				<div class="divider15"></div>
+                  
+                  				<pre class="prettyprint linenums">&lt;table class=&quot;table table-bordered&quot; id=&quot;dyntable&quot;&gt;</pre> -->
+                
+                
+            </div><!--contentinner-->
+        </div><!--maincontent-->
+        
+    </div><!--mainright-->
+    <!-- END OF RIGHT PANEL -->
+    
+    <div class="clearfix"></div>
+    
+    <div class="footer">
+        <div class="footerleft">快达租赁管理 v1.0</div>
+        <div class="footerright">&copy; twen_Yee </div>
+    </div><!--footer-->
+    
+</div><!--mainwrapper-->
+
+</body>
+</html>

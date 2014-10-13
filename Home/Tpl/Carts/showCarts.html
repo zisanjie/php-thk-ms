@@ -1,0 +1,219 @@
+<include file="Public:header"/>
+<head>
+	<meta charset="UTF-8">
+	<title>购物车</title>
+	<link rel="stylesheet" href="__PUBLIC__/Home/Css/carts.css">
+          <script type="text/javascript" src="__PUBLIC__/Js/jquery-1.8.3.js"></script>
+</head>
+            <script>
+                    $(function(){
+                        setPrice();     //设置价格
+
+                        $("#carts .carts_center .tr_hui").mouseover(function(){
+                            $(this).css({background:'#f2f2f2'});
+                        });
+                        $("#carts .carts_center .tr_hui").mouseout(function(){
+                            $(this).css({background:'white'});
+                        })
+
+                        //回首页
+                        $('#toIndex').click(function(){
+                            
+                            window.location.href="__APP__/Index/index/";
+                        });
+
+                        $('.in').click(function(){
+                             setPrice();     //设置价格
+                        });
+
+                        $('.all').click(function(){
+                                
+                                var obj = document.getElementsByName('input[]');
+                                //兼容写法
+                                var n=obj.length;
+
+                                for(var i=0;i<n;i++){
+                                    if(obj[i].checked){
+                                        obj[i].checked=false;
+                                    }else{
+                                        obj[i].checked=true;
+                                    }
+                                }
+
+                                setPrice();     //设置价格
+                        });
+
+                        $('.delCarts').click(function(){
+
+                                if(!confirm('你确定要删除吗?')){
+                                    return false;
+                                }
+
+                                var $th = $(this);
+                                // var id = $(this).parent().siblings().children('.in').val();
+                                var id = $(this).attr('alt');                               
+                                var url = '__APP__/Carts/delCarts/';
+
+                                id = parseInt(id);
+                                
+                                $.post(url,{id:id},function(data){
+                                        
+                                        if('YES' == data.data){
+                                                $th.parent().parent().remove();
+                                                setPrice();     //设置价格
+                                        }else{
+                                            alert('删除失败!');
+                                        }
+                                });
+                        });
+
+                        $('.delSome').click(function(){
+                             if(!confirm('你确定要删除吗?')){
+                                    return false;
+                            }
+                            
+                             var checked = $('.in:checked');
+                             var n=checked.length;
+
+                             for(var i=0; i<n; i++){
+                                    var url = '__APP__/Carts/delCarts/';                                    
+                                    $.post(url,{id:$(checked[i]).siblings('input:hidden').val()},function(data){
+                                                
+                                            if('YES' == data.data){
+                                                       $('.in:checked').parent().parent().remove();
+                                                       setPrice();     //设置价格
+                                            }
+                                    });
+                             }
+
+                             
+                        });
+
+                        $('.input_text').blur(function(){
+                            $pat  = /^[1-9]\d*|0$/;
+                            if(!$pat.test($(this).val())){
+                                alert('这不是一个合法的值');
+                                $(this).val(1);
+                            }
+                            
+                            var yp = $(this).attr('id');                            
+                            var ypr = $('.'+yp).text();                          
+                            // setPrice();     //设置价格
+                            $(this).parent().siblings('.oneTatal').text($(this).val()*ypr);
+                            setPrice();
+                        });
+
+                        $('#addForms').submit(function(){
+                                var checked = $('.in:checked');
+                                var n=checked.length;
+                                if(n<1){
+                                    alert('您还没有选择车辆！');
+                                    return false;
+                                }
+                        });
+
+                        /* 计算支付总额 */
+                        function setPrice(){
+                            var obj = $('.in:checked');
+                            var id;
+                            var price = 0;
+                            var number = 0;
+                            var sum = 0;
+                            var total = 0;
+
+                            for(var i=0; i<obj.length; i++){
+                                    id = $(obj[i]).val();
+                                    price = parseInt($('.'+id).text());                                    
+                                    number = parseInt($('#'+id).val());
+                                    total = price*number;
+                                    $(obj[i]).parent().siblings('.oneTatal').text(total);
+                                    //设置单类车辆总计
+                                    sum += total;
+                            }
+
+                            $('#sumMoney').text(sum+'元');
+                        }
+                                  
+                    });
+            </script>
+<body>
+	<div id="carts" style="background:white;border:#D9D9D9 1px solid;border-radius:5px;">
+		<div class="carts_top" style="border:#D9D9D9 1px solid;">　我的购物车</div>
+		<div class="carts_center">
+                                <form action="__APP__/Posts/addPosts/" method="post" id="addForms">
+                                 <table width="940" border="0" cellspacing="0" cellpadding="0" align="center">
+                                          <tr class="carts_center_th">
+                                            <th width="25"><input type="checkbox" class="all"></th>
+                                            <th width="44">反选</th>
+                                            <th colspan="2">车辆名称</th>
+                                            <th colspan="2">原价（元）</th>
+                                            <th colspan="2">优惠价（元）</th>
+                                            <th colspan="2">数量</th>
+                                            <th colspan="2">小计(元)</th>
+                                            <th colspan="2">操作</th>
+                                          </tr>
+                                          <volist name="Think.session.carts" id="vo">
+                                              <tr class="tr_hui">
+                                                <td height="46"></td>
+                                                <td>
+                                                    <input type="checkbox" class="in" name="input[]" value="<{$vo.fid}>">
+                                                    <input type="hidden" value="<{$vo.id}>">
+                                                </td>
+                                                <td width="40">&nbsp;</td>
+                                                <td class="carts_center_left" width="145">
+                                                    <{$vo.name}>
+                                                </td>
+                                                <td width="65">&nbsp;</td>
+                                                <td class="carts_center_left" width="91">
+                                                    <{$vo.price}>
+                                                </td>
+                                                <td width="62">&nbsp;</td>
+                                                <td class="carts_center_left" width="87" >
+                                                    <font class="<{$vo.fid}>">
+                                                        <if condition="($vo['yprice'] eq $vo['price']) or ($vo['yprice'] eq '')">
+                                                            <{$vo['price']}>
+                                                        <else />
+                                                            <{$vo['yprice']}>
+                                                        </if>
+                                                    </font>
+                                                </td>
+                                                <td width="30">&nbsp;</td>
+                                                <td class="carts_center_left" width="82">
+                                                    <input class="input_text" id="<{$vo.fid}>" type="text" name="number[<{$vo['fid']}>]"  value="<{$vo['number']}>">
+                                                </td>
+                                                <td width="52">&nbsp;</td>
+                                                <td class="carts_center_left carts_red oneTatal" width="81"><{$vo['total']}></td>
+                                                <td width="35">&nbsp;</td>
+                                                <td class="carts_center_left" width="66">
+                                                    <a class="delCarts" alt="<{$vo.id}>">删除</a>
+                                                </td>
+                                              </tr>
+                                          </volist>                                         
+
+                                          <tr class="carts_center_th carts_two">
+                                            <th height="50" width="25"><input type="checkbox" class="all"></th>
+                                            <th width="44">选择</th>
+                                            <th colspan="2" align="left"><a class="delSome">批量删除</a></th>
+                                            <th colspan="2">&nbsp;</th>
+                                            <th colspan="2">&nbsp;</th>
+                                            <td class="carts_total" colspan="3">您共需支付：</td>
+                                            <td class="carts_tv carts_red" colspan="3" id="sumMoney">
+                                                
+                                            </td>
+                                          </tr>
+                                          <tr class="carts_center_th carts_two">
+                                            <td height="50" width="25">&nbsp;</td>
+                                            <td width="44">&nbsp;</td>
+                                            <td colspan="2">&nbsp;</td>
+                                            <td colspan="2">&nbsp;</td>
+                                            <td colspan="2">&nbsp;</td>
+                                            <td colspan="6">
+                                                    　　　　　　　　　　<input class="inp28" type="button" id="toIndex" value="继续购买">　　　
+                                                    <input class="inp28" type="submit" id="createForms" value="提交订单">
+                                            </td>
+                                          </tr>
+                                </table>
+                                </form>
+</div>
+	</div>
+<include file="Public:footer"/>

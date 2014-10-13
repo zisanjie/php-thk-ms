@@ -1,0 +1,166 @@
+<include file="Public:table.head" />
+<script>
+    $(function(){
+
+        $('.skin-color').click(function(){
+
+            $('head').append("<link id='skinstyle' rel='stylesheet' href='__PUBLIC__/Admin/tpl/css/style."+$(this).attr('href')+".css' type='text/css' />");   
+
+            $.post('__URL__/changecolor',{'color':$(this).attr('href')},function(data){
+                // alert(data);
+                        
+            });
+            return false;
+        });
+    });
+
+</script>
+<body onload = "startTime();">
+
+<div class="mainwrapper">
+    
+    <include file="Public:menu.body" />
+    
+    <!-- START OF RIGHT PANEL -->
+    <div class="rightpanel">
+        <include file="Public:users.body" /><!--右边头部-->
+        <div class="breadcrumbwidget">
+            <ul class="skins">
+                <li><a href="default" class="skin-color default"></a></li>
+                <li><a href="orange" class="skin-color orange"></a></li>
+                <li><a href="dark" class="skin-color dark"></a></li>
+                <li>&nbsp;</li>
+                <li class="fixed"><a href="" class="skin-layout fixed"></a></li>
+                <li class="wide"><a href="" class="skin-layout wide"></a></li>
+            </ul><!--skins-->
+            <ul class="breadcrumb">
+                <li><a href="__APP__/Index/main">Home</a> <span class="divider">/</span></li>
+                <li><a href="#">订单管理</a> <span class="divider">/</span></li>
+                <li class="active">订单详情</li>
+            </ul>
+        </div><!--breadcrumbs-->
+        <div class="pagetitle">
+            <h1>订单详情</h1> <span>用来显示订单详细信息</span>
+        </div><!--pagetitle-->
+        
+        <div class="maincontent">
+            <div class="contentinner">
+            
+                <h4 class="widgettitle">订单详情</h4>
+                <table class="table table-bordered" id="dyntable">
+                    <colgroup>                        
+                        <col class="con1" />
+                        <col class="con0" />
+                        <col class="con1" />
+                        <col class="con0" />
+                        <col class="con1" />
+                    </colgroup>                    
+                    <tbody>
+                        <tr>
+                            <td>订单号</td>
+                            <td><{$udata.form_number}></td>        
+                            <td>订车人</td>                                                           
+                            <td><{$udata.truename}></td>
+                        </tr>
+                         <tr>
+                            <td>接车地址</td>
+                            <td><{$udata.address}></td>        
+                            <td>电话号码</td>                                                           
+                            <td><{$udata.phone}></td>
+                        </tr>
+                        <tr>                             
+                            <td>订车时间</td>                                                           
+                            <td>
+                                    <{$udata.ftime|date="Y-m-d H:i:s",###}>                                   
+                            </td>
+                                                           
+                            <td>订单状态</td>
+                            <td>
+                                <if condition="$udata.status eq 1 ">进行中
+                                <else /> 已过期
+                                </if>
+                            </td>
+                        </tr>                              
+                    </tbody>
+                </table>
+                <table class="table table-bordered" id="dyntable">
+                                <colgroup>                        
+                                    <col class="con1" />
+                                    <col class="con0" />
+                                    <col class="con1" />
+                                    <col class="con0" />
+                                    <col class="con1" />
+                                    <col class="con0" />
+                                </colgroup> 
+                                <tr>
+                                    <th class="center">名称</th>
+                                    <th class="center">单价</th>
+                                    <th class="center">优惠</th>
+                                    <th class="center">数量</th>
+                                    <th class="center">成交价</th>
+                                </tr>
+                                <tbody>
+                                <volist name="data" id="vo">                                        
+                                        <tr>
+                                            <td style="text-indent:2em;">
+                                                    <{$vo.foodname}>
+                                            </td>
+                                            <td class="center"><{$vo.price}>￥</td>
+                                            <td class="center">
+                                                <empty name="vo.yprice"><{$vo.price}>￥
+                                                <else /> <{$vo.yprice}>￥
+                                                </empty>
+                                            </td>
+                                            
+                                            <td class="center">
+                                                <{$vo.foods_number}>
+                                            </td>
+                                            <td class="center">
+                                                <{$vo.nprice}>￥
+                                            </td>
+                                        </tr>
+                                </volist>
+                                <tr>
+                                    <td colspan="5" style="text-indent:2em;">
+                                        总计:<{$udata.sum}>￥
+                                    </td>
+                                </tr>
+                             </tbody>
+                  </table>
+                
+               <!--  <div class="divider15"></div>
+               
+               <pre class="prettyprint linenums">//Include this script in your document &lt;head&gt;
+               &lt;script type=&quot;text/javascript&quot; src=&quot;js/jquery.dataTables.min.js&quot;&gt;&lt;/script&gt;</pre>
+               
+               <div class="divider15"></div>
+               
+               <pre class="prettyprint linenums">// dynamic table<br>jQuery('#dyntable').dataTable({
+                  &quot;sPaginationType&quot;: &quot;full_numbers&quot;,
+                  &quot;aaSortingFixed&quot;: [[0,'asc']],
+                  &quot;fnDrawCallback&quot;: function(oSettings) {
+                     jQuery.uniform.update();
+                  }<br>});<br></pre>
+                  
+                                <div class="divider15"></div>
+                  
+                                <pre class="prettyprint linenums">&lt;table class=&quot;table table-bordered&quot; id=&quot;dyntable&quot;&gt;</pre> -->
+                
+                
+            </div><!--contentinner-->
+        </div><!--maincontent-->
+        
+    </div><!--mainright-->
+    <!-- END OF RIGHT PANEL -->
+    
+    <div class="clearfix"></div>
+    
+    <div class="footer">
+        <div class="footerleft">快达租赁管理 v1.0</div>
+        <div class="footerright">&copy; twen_Yee </div>
+    </div><!--footer-->
+    
+</div><!--mainwrapper-->
+
+</body>
+</html>

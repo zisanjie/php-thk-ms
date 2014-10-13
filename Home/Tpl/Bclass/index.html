@@ -1,0 +1,50 @@
+<!doctype html>
+<include file="Public:header"/>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>bclass index</title>
+	<link rel="stylesheet" href="__PUBLIC__/Home/Css/bclass_index.css">
+	<script src="__PUBLIC__/Home/Js/jquery-1.8.3.js"></script>
+	<script>
+		$(function(){
+			$('.li_content').mouseover(function(){
+				$(this).css({'background':'#B24422', 'color':'white'});
+			}).mouseout(function(){
+				$(this).css({'background':'white', 'color':'#992222'});
+			});
+		});
+	</script>
+</head>
+<body>
+	<div id="bclass_index" style="border:#D9D9D9 1px solid;border-radius:5px;background:white;padding:5px">
+		<div style="color:#1F1F1F;font-size:16px;margin:12px">分类浏览</div>
+		<div style="height:1px;background:#D9D9D9;margin:0px auto 15px;width:960px;"></div>
+		<div style="background:white;min-height:600;width:960px;">
+			<volist name="classData" id="vo">			
+				<div class="bclass_list">
+					<div class="bclass_list_left">
+						<div style="margin-top:10px;margin-left:32px">
+							<img style="width:100px;height:100px;border:#D9D9D9 1px solid;" class="img-circle" src="__ROOT__/Uploads/Bclass/<{$vo.pic}>"/>
+						</div>
+						<div style="text-align:center;color:#5F5F5F;font-size:14px;"><b><{$vo.bname}></b></div>
+					</div>
+					<div class="bclass_list_right">
+						<ul>					
+							<volist name="vo.sclass" id="bo">
+							<li>		
+								<a href="__APP__/Sclass/index/id/<{$bo.id}>" class="foods_type" title="<{$bo.sname}>" alt="<{$bo.id}>">
+
+									<span class="li_content"><{$bo.sname}></span>
+								</a>
+							</li>
+							</volist>
+						</ul>
+					</div>
+				</div>	
+			</volist >
+		</div>
+	</div>
+</body>
+</html>
+<include file="Public:footer"/>

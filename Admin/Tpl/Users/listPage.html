@@ -1,0 +1,156 @@
+<include file="Public:table.head" />
+<script>
+    $(function(){
+
+        $('.skin-color').click(function(){
+
+            $('head').append("<link id='skinstyle' rel='stylesheet' href='__PUBLIC__/Admin/tpl/css/style."+$(this).attr('href')+".css' type='text/css' />");   
+
+            $.post('__URL__/changecolor',{'color':$(this).attr('href')},function(data){
+                // alert(data);
+                        
+            });
+            return false;
+        });
+    });
+
+</script>
+<body onload = "startTime();">
+
+<div class="mainwrapper">
+	
+    <include file="Public:menu.body" />
+    
+    <!-- START OF RIGHT PANEL -->
+    <div class="rightpanel">
+        <include file="Public:users.body" /><!--右边头部-->
+        <div class="breadcrumbwidget">
+        	<ul class="skins">
+                <li><a href="default" class="skin-color default"></a></li>
+                <li><a href="orange" class="skin-color orange"></a></li>
+                <li><a href="dark" class="skin-color dark"></a></li>
+                <li>&nbsp;</li>
+                <li class="fixed"><a href="" class="skin-layout fixed"></a></li>
+                <li class="wide"><a href="" class="skin-layout wide"></a></li>
+            </ul><!--skins-->
+        	<ul class="breadcrumb">
+                <li><a href="__APP__/Index/main">Home</a> <span class="divider">/</span></li>
+                <li><a href="#">用户管理</a> <span class="divider">/</span></li>
+                <li class="active">用户列表</li>
+            </ul>
+        </div><!--breadcrumbs-->
+        <div class="pagetitle">
+        	<h1>用户列表</h1> <span>用来显示所有用户相关信息</span>
+        </div><!--pagetitle-->
+        
+        <div class="maincontent">
+        	<div class="contentinner">
+            
+            	<h4 class="widgettitle">用户列表</h4>
+            	<table class="table table-bordered" id="dyntable">
+                    <colgroup>
+                        <col class="con0" style="align: center; width: 4%" />
+                        <col class="con1" />
+                        <col class="con0" />
+                        <col class="con1" />
+                        <col class="con0" />
+                        <col class="con1" />
+                        <col class="con0" />
+                        <col class="con1" />
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th class="head0 nosort">
+                                <input type="checkbox" class="checkall" />
+                            </th>
+                            <th class="center">ID</th>
+                            <th class="center">用户名</th>
+                            <th class="center">地址</th>
+                            <th class="center">email</th>
+                            <th class="center">联系方式</th>
+                            <th class="center">订车</th>
+                            <th class="center">修改</th>
+                            <th class="center">删除</th>                           
+                        </tr>
+                    </thead>
+                    <tbody>
+                    	<volist name="udata" id="vo">
+	                   <tr class="gradeX">
+	                           <td class="aligncenter">
+	                               <span class="center">
+	                                    <input type="checkbox" />
+	                                </span>
+	                           </td>
+                                     <td class="center"><{$i}></td>
+	                           <td class="center"><{$vo.username}></td>
+	                         <td class="center">
+                                            <empty name="vo.address">未填写
+                                            <else /> <{$vo.address}>
+                                            </empty>
+                                    </td>
+	                         <td class="center">
+                                            <empty name="vo.email">未填写
+                                            <else /> <{$vo.email}>
+                                            </empty>
+                                    </td>
+                                    <td class="center">
+                                            <empty name="vo.phone">未填写
+                                            <else /> <{$vo.phone}>
+                                            </empty>
+                                    </td>
+                                    <td class="center">
+                                        <if condition="($vo.post eq '1')">允许                     
+                                        <else />不允许
+                                        </if>
+                                    </td>                                     
+                                     <td class="center">
+                                        <a href="__APP__/Users/editPage/id/<{$vo.id}>" title="修改">
+                                        <span class="icon-edit"></span>
+                                        </a>
+                                    </td>
+                                    <td class="center">
+                                        <a href="__APP__/Users/del/id/<{$vo.id}>" onclick="return confirm('你确定要删除吗?');" title="删除">
+                                        <span class="icon-remove"></span>
+                                        </a>
+                                    </td>
+	                   </tr>
+	               </volist>
+                    </tbody>
+                </table>
+                
+               <!--  <div class="divider15"></div>
+               
+               <pre class="prettyprint linenums">//Include this script in your document &lt;head&gt;
+               &lt;script type=&quot;text/javascript&quot; src=&quot;js/jquery.dataTables.min.js&quot;&gt;&lt;/script&gt;</pre>
+               
+               <div class="divider15"></div>
+               
+               <pre class="prettyprint linenums">// dynamic table<br>jQuery('#dyntable').dataTable({
+                  &quot;sPaginationType&quot;: &quot;full_numbers&quot;,
+                  &quot;aaSortingFixed&quot;: [[0,'asc']],
+                  &quot;fnDrawCallback&quot;: function(oSettings) {
+                     jQuery.uniform.update();
+                  }<br>});<br></pre>
+                  
+                  				<div class="divider15"></div>
+                  
+                  				<pre class="prettyprint linenums">&lt;table class=&quot;table table-bordered&quot; id=&quot;dyntable&quot;&gt;</pre> -->
+                
+                
+            </div><!--contentinner-->
+        </div><!--maincontent-->
+        
+    </div><!--mainright-->
+    <!-- END OF RIGHT PANEL -->
+    
+    <div class="clearfix"></div>
+    
+    <div class="footer">
+        <div class="footerleft">快达租赁管理 v1.0</div>
+        <div class="footerright">&copy; twen_Yee </div>
+    </div><!--footer-->
+    
+</div><!--mainwrapper-->
+
+</body>
+</html>

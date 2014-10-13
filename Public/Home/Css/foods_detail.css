@@ -1,0 +1,89 @@
+#detail{
+	width:980px;
+	height:auto;
+	overflow:hidden;
+	/*background:white;*/
+	margin:0px auto;	
+}
+#detail_left{
+	float:left;
+	width:650px;
+	/*min-height:800px;*/
+	background:white;
+	/*border:red 1px solid;*/
+}
+.car{
+	width:100px;
+	height:26px;
+	background:#9C2222;
+	float:right;
+	line-height:26px;
+	text-align:center;
+	margin-right:10px;
+	margin-top:10px;
+	color:white;
+	font-size:14px;
+}
+.car:hover{
+	cursor:pointer;
+	color: white;
+	text-decoration:none;
+}
+#detail_right{
+	width:300px;
+	height:500px;
+	/*background:white;*/
+	float:right;
+}
+#right_top{
+	width:300px;
+	height:595px;
+	background:white;
+}
+
+#right_top .pstyle{
+	font-size:16px;
+	margin:0px 10px;
+	color:#68616D;
+	height:35px;
+	line-height:35px;
+	border-bottom:#F5F4F2 1px solid;
+}
+
+.-E{
+	margin:1px 0px;
+	width:445px;
+	min-height:100px;
+	background:#F3F3F3;
+	float:left;
+}
+
+.-E p{
+	text-indent:2em;
+	height:30px;
+	line-height:30px;
+}
+
+.colorGreen{
+	width:10px;
+	height:120px;
+	background:#9DE008;
+	float:left;
+	margin:1px 0px;
+}
+
+.colorBlue{
+	width:10px;
+	height:100px;
+	background:#0F91CF;
+	float:left;
+	margin:1px 0px;	
+}
+
+.evaRight{
+	width:15px;
+	height:120px;
+	float:left;
+	background:#F3F3F3;
+	margin:1px 0px;
+}

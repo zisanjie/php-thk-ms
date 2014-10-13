@@ -1,0 +1,145 @@
+<include file="Public:header"/>
+<head>
+	<meta charset="UTF-8">
+	<title>添加用户订单</title>
+	<link href="__PUBLIC__/Home/Css/addPosts.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="__PUBLIC__/Js/jquery-1.8.3.js"></script>
+	<script>
+	$(function(){
+		var maxLength = 131;
+		//限制输入框中字的长度，未完成
+		$("#ask").keydown(function(){
+			var curLength = $("#ask").val().length;	
+			if(curLength>=maxLength){
+				var num=$("#ask").val().substr(0,maxLength-1);
+				$("#ask").val(num);
+			} 
+		});
+
+		/* 取消订单,返回到购物车页面 */
+		$('.inp22_red').click(function(){
+			window.location.href = '__APP__/Carts/showCarts/';
+		});
+	});
+
+	</script>
+</head>
+
+<body>
+	<div id="addPosts" style="background:white;border:#D9D9D9 1px solid;border-radius:5px;">
+		<div class="left">
+			<div class="nav">
+				<img class="nav_o" src="__PUBLIC__/Home/Imgs/orders_actions_icon.gif">
+				<span>创建订单</span>
+				<span></span>
+			</div>
+			<div class="posts_wrap">
+				<form action="__APP__/Posts/finPosts" method="post">
+			  	<table width="620" border="0" cellpadding="0" cellspacing="0">
+				    	<tr>
+				      		<td height="10" colspan="3">&nbsp;</td>
+			        	   	</tr>
+				   	<tr>			     
+			                  		<td  class="form_font" colspan="3">
+			                 		 <span class="explain">　订车说明：</span>
+			                 		 <span class="font_explain">平均接车时间大概在30分钟，下单请谨慎！ 
+	                   	 	       		</span>                  
+	 			       		</td>
+	                		    	</tr>
+				    	<tr>
+				      		<td align="right" height="30">姓名</td>
+				      		<td width="309">　<{$Think.session.utruename}></td>
+				      		<td width="237" class="font_explain">&nbsp;</td>
+			       	 	</tr>
+				    	<tr>
+				    	  <td align="right" height="30">您的手机</td>
+				    	  <td width="309">　<{$Think.session.uphone}></td>
+				    	  <td width="237" class="font_explain">
+				    	  	<a href="__APP__/Ucenter/index/pass" style="text-decoration:none;color:#992222;font-size:13px;">需更换？请点击</a>
+				    	  </td>
+                  				</tr>
+			    		<tr>
+			      			<td align="right" height="30"><label for="address">详细地址</label></td>
+			      			<td>　<{$Think.session.uaddress}></td>
+			      			<td class="font_explain">
+			      				<a href="__APP__/Ucenter/index/address" style="text-decoration:none;color:#992222;font-size:13px;">新地址？请点击</a>
+			      			</td>
+		        		</tr>
+		        			
+		        		<tr>
+			      			<td align="right" height="30"><label for="start">预定时间</label></td>
+			      			<td>
+		          				<textarea name="ytime" id="ytime" cols="45" rows="1" style="height:20px; width:300px;resize:none;"></textarea>
+		          	      	</td>
+		          	      	<td class="font_explain">时间请务必以:年/月/日/时(24小时)/分 填写</td>
+		        		</tr>	
+		        		<tr>
+			      			<td align="right" height="30"><label for="start">起点</label></td>
+			      			<td>
+		          				<textarea name="start" id="start" cols="45" rows="1" style="height:20px; width:300px;resize:none;"></textarea>
+		          	      	</td>
+		        		</tr>
+		        		<tr>
+			      			<td align="right" height="30"><label for="end">终点</label></td>
+			      			<td>
+		          				<textarea name="end" id="end" cols="45" rows="1" style="height:20px; width:300px;resize:none;"></textarea>
+		          	      	</td>
+		        		</tr>
+		        			
+		        			
+		        			
+		        			
+			    		<tr>
+			      			<td align="right" height="30"><label for="userohters">车辆要求</label></td>
+			      			<td>
+		          				<textarea name="ask" id="ask" cols="45" rows="5" style="height:30px; width:300px;resize:none;"></textarea>
+		          	      	</td>
+			      			<td class="font_explain">对这些车辆的其它要求，方便更适合您的喜好</td>
+		        			</tr>
+		        			
+					<tr>
+				      		<td colspan="3" align="right" height="35">
+		                  				<input class="inp22" type="submit" value="确认订单" />
+		                        			<input class="inp22_red" type="button" value="取消订单" />                  	
+	                  		　　		</td>
+		        			</tr>
+		      		</table>
+				</form>	
+			</div>
+		</div>
+		<div class="right">
+			<table width="620" border="0" cellpadding="0" cellspacing="0">
+				<caption><b>车辆详情</b></caption>
+				<tr>
+					<th>名称</th>
+					<th>价格</th>
+					<th>数量</th>
+					<th>总计</th>
+				</tr>　　　　　　　　　　　　				
+				<volist name="data" id="vo">
+					<tr>
+						<td align="center">
+							<{$vo.name}>
+						</td>
+						<td>
+							<empty name="vo.yprice">
+									<{$vo.price}>元/小时
+		                                                	<else /> 	<{$vo.yprice}>元
+		                                                	</empty>
+						</td>
+						<td>x<{$vo.number}></td>
+						<td>
+							<{$vo.totals}>
+							元
+						</td>
+					</tr>
+				</volist> 
+			</table>
+			<span class="total">总计：
+			<{$sum}>元
+			</span>
+		</div>
+	</div>
+</body>
+</html>
+<include file="Public:footer"/>

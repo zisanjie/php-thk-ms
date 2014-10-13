@@ -1,0 +1,75 @@
+#carts{
+	width:980px;		/*页面宽度*/	
+	margin:0px auto;	/*于body中text-align:center一起做页面居中*/
+	min-height:430px;
+	overflow:hidden;
+	background:none no-repeat scroll 0 0 #FFFFFF;
+}
+
+#carts .carts_top{
+	height:40px;
+	width:940px;
+	border:1px solid #EBEBEB;
+	background:#EEEEEE;
+	margin:10px 10px 10px 20px;
+	border-radius:5px;
+	line-height:40px;
+	font-weight:bold;
+	font-size:14px;
+}
+#carts table{
+	margin:10px auto;
+	overflow:hidden;
+	font-size:13px;
+}
+#carts .carts_center{
+	text-align:center;
+}
+#carts .carts_center_th th{
+	border-bottom:1px solid #E2E2E2;
+	color:#992222;	
+}
+#carts .carts_center_left{
+	text-align:left;
+}
+
+#carts .delCarts{
+	font-size:13px;
+}
+.delCarts{
+	cursor:pointer;
+}
+.delSome{
+	cursor:pointer;
+}
+#carts .carts_two th{
+	border-top:1px solid #E2E2E2;
+}
+#carts .carts_total{
+	text-align:right;
+	border-top:1px solid #E2E2E2;
+	border-bottom:1px solid #E2E2E2;
+}
+#carts .carts_tv{
+	text-align:left;
+	font-size:18px;
+	border-top:1px solid #E2E2E2;
+	border-bottom:1px solid #E2E2E2;
+}
+#carts .carts_red{
+	color:#890919;
+	font-weight:bold;
+}
+#carts .inp28{
+	height:23px;
+	width:70px;
+	background:#0F91CF;
+	border:0px;
+	color:white;
+	font-weight:bold;
+	border-radius:2px;
+}
+
+#carts .carts_center_left .input_text{
+	width:30px;
+}

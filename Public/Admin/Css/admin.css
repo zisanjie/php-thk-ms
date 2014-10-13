@@ -1,0 +1,67 @@
+#header{
+	height:auto;
+	overflow:hidden;
+	background:#404040 url("../Imgs/bg-body-bar.jpg") repeat;
+}
+
+#header .logo{
+	width:237px;
+	height:64px;
+	float:left;
+}
+#header .search{	
+	height:64px;
+	line-height:64px;
+	float:left;
+}
+#header .other{
+	width:200px;
+	height:30px;
+	line-height:30px;
+	margin-right:20px;	
+	float:right;
+	font-size:13px;
+	color:white;
+}
+
+#admin{
+	
+	
+}
+#menuL{
+	float:left;	
+	width:90px;
+	position:static;
+	font-size:14px;	
+	min-height:300px; /**/
+	background:#404040 url("../Imgs/bg-body-bar.jpg") repeat;	
+}
+#menuL li{
+	height:64px;
+	line-height:64px;
+	text-indent:1em;
+	box-shadow:0px 1px 1px 0px rgba(0,0,0,0.5);
+}
+#contentC{	
+	width:auto;
+	float:left;
+	overflow:hidden;
+	min-height:1000px;	
+}
+#listR{
+	float:right;
+	width:220px;
+	min-height:300px; /**/	
+	position:static;
+	border:#CDCDCD 1px solid;		
+}
+
+.in30{
+	width:220px;
+	height:30px;
+	border-radius: 15px 0px 0px 15px;
+}
+
+.menuHover{
+	background:#5F5D5D;
+}

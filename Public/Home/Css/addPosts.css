@@ -1,0 +1,122 @@
+#addPosts{
+	height:auto;	
+	background:none no-repeat scroll 0 0 #FFFFFF;
+	width:982px;		/*页面宽度*/	
+	margin:0px auto;	/*于body中text-align:center一起做页面居中*/
+	overflow:hidden;	/*兼容性处理*/
+}
+#addPosts .left{
+	float:left;
+	width:620px;
+	min-height:400px;			
+	margin:10px 0px 10px 10px;
+}
+
+#addPosts .left input{
+	border:1px solid #ddd;
+}
+
+#addPosts .left .inp22{
+	background:#0F91CF;
+	width:70px;
+	height:22px;
+	border:0px;
+	/* 半径 */
+	border-radius:3px;
+	font-size:12px;
+	font-weight:bold;
+	color:#fff;
+}
+#addPosts .left .inp22_red{
+	background:#C51A1A;
+	width:70px;
+	height:22px;
+	border:0px;
+	/* 半径 */
+	border-radius:3px;
+	font-size:12px;
+	font-weight:bold;
+	color:#fff;
+}
+
+#addPosts .left .nav{
+	margin-top:0px;
+	height:35px;
+	line-height:35px;
+	border-radius:5px;
+	background:#F5F5F5;
+	border:#D9D9D9 1px solid;
+}
+
+#addPosts .left .nav .nav_o{
+	margin-top:0px;
+	margin-left:10px;
+}
+
+#addPosts .left .nav span{
+	font-size:13px;
+	font-weight:bold;
+	position:relative;
+}
+
+#addPosts .left .posts_wrap{
+	margin-top:20px;
+	height:335px;			
+	border-radius:5px;
+	background:#F5F5F5;
+	font-size:13px;
+	border:#D9D9D9 1px solid;
+}
+
+#addPosts .left .posts_wrap .form_font{
+	border-bottom:1px dotted #ccc;
+}
+
+#addPosts .left .posts_wrap .explain{
+	color:#0D80B5;
+	font-weight:bold;
+	font-size:14px;
+}
+#addPosts .left .posts_wrap .font_explain{
+	color:#989898;
+	font-size:13px;	
+}
+
+#addPosts .right{
+	float:right;
+	width:330px;
+	min-height:400px;		
+	background:#F5F4F2;
+	margin:10px;
+	font-size:13px;
+	border:#D9D9D9 1px solid;
+	border-radius:5px;
+}
+
+#addPosts .right span{
+	color:#992222;
+}
+#addPosts .right table{
+	width:98%;
+	margin:0px 1%;		
+}
+#addPosts .right th{
+	border-bottom:#E3E3E3 1px dotted;
+	height:35px;
+	line-height:35px;
+}
+#addPosts .right td{
+	height:30px;
+	line-height:30px;
+}
+#addPosts .right th,#addPosts .right td{color:#992222;}
+#addPosts .right td{text-align:center;}
+#addPosts .right .total{
+	float:right;
+	height:25px;
+	line-height:40px;
+	font-weight:bold;
+}
+#addPosts .right .right_details{
+	font-size:14px;	
+}

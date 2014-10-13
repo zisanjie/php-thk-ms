@@ -1,0 +1,42 @@
+* 					{ margin:0px; padding:0px; }
+body				{ }
+a 					{ outline-style: none; }
+ 
+ul#menuback {
+	margin: -23px auto;
+	list-style: none;
+	background: url(../Imgs/menu-bg.jpg);
+	width: 800px;
+	overflow: auto;
+}
+
+ul#menuback li.shutter {
+	width: 200px;
+	height: 100px;
+	display: block;
+	float: left;
+}
+
+ul#menuback li#shutter1 {
+	background: url(../Imgs/shutter-africanplains.jpg) no-repeat; 
+}
+ul#menuback li#shutter2 {
+	background: url(../Imgs/shutter-reptiles.jpg) no-repeat; 
+}
+ul#menuback li#shutter3 {
+	background: url(../Imgs/shutter-aviary.jpg) no-repeat; 
+}
+ul#menuback li#shutter4 {
+	background: url(../Imgs/head.jpg) no-repeat; 
+}
+ul#menuback li#shutter5 {
+	background: url(../Imgs/head.jpg) no-repeat; 
+}
+
+a.link {
+   width: 200px;
+   height: 100px;
+   display: block;
+   background: url(../Imgs/window.png) no-repeat bottom center;
+   text-indent: -9999px;
+}

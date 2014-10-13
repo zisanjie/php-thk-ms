@@ -1,0 +1,148 @@
+<!doctype html>
+<include file="Public:header"/>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<link href="__PUBLIC__/Home/Css/search.css" rel="stylesheet" type="text/css" />
+		<script type="text/javascript" src="__PUBLIC__/Js/jquery-1.8.3.js"></script>
+		<link rel="stylesheet" href="__PUBLIC__/Admin/tpl/css/bootstrap.min.css" type="text/css" />
+		<!-- Include all compiled plugins (below), or include individual files as needed --> 
+		<script src="__PUBLIC__/Admin/tpl/js/bootstrap.min.js"></script>
+
+		<script type="text/javascript">
+			$(function(){
+				/*添加到购物车Ajax*/
+				$('.addCarts').click(function(){
+					
+					var fid = $(this).attr('alt');				
+					var url = '__APP__/Carts/setCarts/';
+					var nowobj = $(this);
+
+					$.post(url,{id:fid},function(cdata){
+
+						if('YES' == cdata.data){
+	                                                	
+		                                            		nowobj.text('已添加');
+		                                        	}else if('NO' == cdata.data){
+		                                        		nowobj.text('已存在');                   		
+		                                        	}else{                                      		
+		                                        		if(!confirm('您还没有登录,去登录吗?')){
+	                                    				return false;
+	                                				}
+		                                        		//window.location.href = "__APP__/Login/login";
+		                                        		$('#myModal').modal('show');
+		                                        	}
+
+					});
+				});
+			});
+		</script>		
+	</head>
+	<body>
+		
+		<div id="search_main" style="background:white;border:#D9D9D9 1px solid;border-radius:5px;">
+			<div style="width:650px;height:500px;float:left;background:white;">
+			<empty name="data">
+
+			<else/>
+			<table border="0" cellspacing="0" cellpadding="0">
+				<volist name="data" id="vo">
+					<tr>
+						<td width="400">
+							<{$i}>.
+							<a href="__APP__/Foods/details/id/<{$vo.id}>" style="text-decoration:none;color:#992222;font-size:14px;">
+								<font color="#B24422"><{$vo.name}></font>
+							</a>
+						</td>
+						<td>
+							价格：
+							<font color="#B24422"><{$vo.price}>￥</font>
+						</td>
+					</tr>
+					<tr style="height:6px;width:500px;">
+						<td></td>
+						<td></td>
+					</tr>
+					<td colspan="2">
+						描述：<{$vo.describe|substr=0,60}>...
+					</td>
+					<tr style="height:64px">
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr style="background-color:#D9D9D9;height:1px;width:500px;">
+						<td></td>
+						<td></td>
+					</tr>
+				</volist>
+			</table>
+			</empty>
+			</div>
+		<div id="search_right">
+			<volist name="data" id="vo" offset="0" length='4'>
+				<div class="advance">
+					<a href="__APP__/Foods/details/id/<{$vo.id}>" target="__blank" class="thumbnail" style="margin-right:10px;">
+						<img src="__ROOT__/Uploads/Foods/thumb/th_<{$vo.pic}>" style="width:170px; height:100px" />
+					</a>
+				</div>	
+				<div class="detail">
+					<br />
+					<a href="__APP__/Foods/details/id/<{$vo.id}>" target="__blank">
+						<font color="#B24422"><{$vo.name}></font>
+					</a>
+					<p color="#B24422">价格：<{$vo.price}>￥</p>
+					<a alt="<{$vo.id}>" class="addCarts">
+						+购物车
+					</a>
+				</div>			
+			</volist>			
+		</div>		
+		</div>
+		<notempty name="page">
+		<div id="search_page">
+			共<{$page}>	
+		</div>
+		</notempty>
+
+				<!-- Modal -->
+		<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+ 			<div class="modal-header">
+    		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    		<h3 id="myModalLabel">请登陆</h3>
+  		</div>
+  		<div class="modal-body">
+  			 <form class="form-horizontal" action="__APP__/Login/checkLogin/" method="post">
+  			  <div class="control-group">
+  			    <label class="control-label" for="inputEmail">用户名：</label>
+  			    <div class="controls">
+  			      <input type="text" id="inputEmail" placeholder="输入用户名" name="username">
+  			    </div>
+  			  </div>
+  			  <div class="control-group">
+  			    <label class="control-label" for="inputPassword">密&nbsp;&nbsp;&nbsp;&nbsp;码：</label>
+  			    <div class="controls">
+  			      <input type="password" id="inputPassword" placeholder="输入密码" name="userpwd">
+  			    </div>
+  			  </div>
+  			  <div class="control-group">
+  			    <div class="controls">
+  			      <label class="checkbox">
+  			        <input type="checkbox" name="jizhu"> 记住我
+  			        <a href="__APP__/Login/safe/" style="margin-left:80px;text-decoration:none;color:#992222;font-size:13px;">忘记密码?</a>
+  			      </label>
+
+  			      <button type="submit" class="btn">登陆</button>
+  			    </div>
+  			  </div>
+  			</form>
+  		</div>
+  		<div class="modal-footer">
+   	 		<button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
+  		</div>
+		</div>
+
+	</body>
+</html>
+<include file="Public:footer"/>
