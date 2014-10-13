@@ -39,7 +39,7 @@
                             <span class="icon-home"></span> 控制面板
                         </a>
                     </li>
-               <if condition="$Think.session.mroles eq 1 or $Think.session.mroles eq 2 or $Think.session.mroles eq 4 ">
+               <!-- <if condition="$Think.session.mroles eq 1 or $Think.session.mroles eq 2 or $Think.session.mroles eq 4 ">
                 <li class="dropdown"><a href=""><span class="icon-user"></span> 用户管理</a>
                 	<ul>
                     	   <li><a href="__APP__/Users/listPage">普通组&nbsp;---&nbsp;列表</a></li>
@@ -78,11 +78,11 @@
                 <li class="dropdown"><a href=""><span class="icon-user"></span> 权限管理</a>
                     <ul>
                         <li><a href="__APP__/Roles/listPage">权限列表</a></li>
-                        <!-- <li><a href="__APP__/Roles/addPage">添加权限</a></li> -->
+                        <!-- <li><a href="__APP__/Roles/addPage">添加权限</a></li>
                         <li><a href="__APP__/Roles/addAdmin">添加用户</a></li>
                     </ul>
                 </li>
-                </if>
+                </if> -->
                 <if condition="$Think.session.mroles eq 1 or $Think.session.mroles eq 3">
                 <li class="dropdown"><a href=""><span class="icon-th-list"></span> 分类管理</a>
                 	<ul>
@@ -107,15 +107,15 @@
                     </ul>
                 </li>
                 </if>
-                <if condition="$Think.session.mroles eq 1 or $Think.session.mroles eq 5">
+                <!-- <if condition="$Think.session.mroles eq 1 or $Think.session.mroles eq 5">
                 <li class="dropdown"><a href=""><span class="icon-bell"></span> 订单管理</a>
                     <ul>
                         <li><a href="__APP__/Forms/new_forms">新订单</a></li>                        
                         <li><a href="__APP__/Forms/listPage">历史订单</a></li>
-                        <!-- <li><a href="#">稽查订单</a></li> -->
+                        <!-- <li><a href="#">稽查订单</a></li>
                     </ul>
                 </li>               
-               </if>
+               </if> -->
                <if condition="$Think.session.mroles eq 1 or $Think.session.mroles eq 8">
                 <li class="dropdown"><a href=""><span class="icon-comment"></span> 车辆评论</a>
                 	<ul>
