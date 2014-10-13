@@ -108,9 +108,11 @@
 				unset($_POST['username']);
 			}
 
-			// $userself = $user->where($_POST)->find();
+			$userself = $user->where($_POST)->find();
+			$hotelself = $hotels->where($_POST)->find();
+			$deparmentself = $departments->where($_POST)->find();
 
-			if(!empty($userself = $user->where($_POST)->find())){
+			if(!empty($userself)){
 
 				//判断用户Ip是否被禁用
 				if(!$this->loginPass()){
@@ -146,7 +148,10 @@
 				}
 					
 				$this->redirect('/Ucenter/index/histroy');	
-			}else if(!empty($hotelself = $hotels->where($_POST)->find())){
+			}
+			
+			
+			else if(!empty($hotelself)){
 			//判断用户Ip是否被禁用
 				if(!$this->loginPass()){
 					echo '<script>alert("您已被禁止登录，请联系管理员!");window.location.href="'.$_SERVER['root'].'/ms/index.php/Us/contact2Us";</script>';exit;
@@ -180,9 +185,13 @@
 				}
 					
 				$this->redirect('/Hcenter/index/histroy');	
-		}else if(!empty($deparmentself = $departments->where($_POST)->find())){
+		}
+		
+		else if (!empty($deparmentself))
+		{
 			//判断用户Ip是否被禁用
-				if(!$this->loginPass()){
+				if(!$this->loginPass())
+				{
 					echo '<script>alert("您已被禁止登录，请联系管理员!");window.location.href="'.$_SERVER['root'].'/ms/index.php/Us/contact2Us";</script>';exit;
 				}
 				//设置用户主键
@@ -202,30 +211,40 @@
 				session('uhotel',$deparmentself['hotel']);
 				session('uabout',$deparmentself['about']);
 
-				if($jizhu){
+				if($jizhu)
+				{
 					setcookie('username',$deparmentself['username'],time()+7*24*3600,'/');
 				}			
 
 				unset($deparmentself);
 
 				$data = $departments ->where(array("username"=>$_POST['username'])) ->find();
-				if(isset($data)){
+				if(isset($data))
+				{
 					$data="user_login";
-				}else{
+				}
+				else
+				{
 					$data="nouser_login";
 				}
 					
 				$this->redirect('/Dcenter/index/histroy');	
-			} else {
+			}
+			 
+			else   
+			{
 
 				$this->error("用户名或密码错误!");
-			}
-		}
+			}	
+		}  
 
 		function safe(){
 			$this->display();
 		}
 
+		
+		
+		
 		/*找回密码*/
 		function getPass(){
 

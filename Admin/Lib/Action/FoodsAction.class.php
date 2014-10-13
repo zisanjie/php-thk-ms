@@ -1,6 +1,6 @@
 <?php
 class FoodsAction extends PublicAction{
-       //查询车辆
+        //查询车辆
        public function selFoods(){
             
             $foods = M('Foods');
@@ -53,15 +53,22 @@ class FoodsAction extends PublicAction{
 
             $id = trim($_GET['id']);
             $foods = M('Foods');
+            $driver = M('Driver');
 
             $data = $foods->find($id);
             $this->assign('data', $data);
+
+            $where['car_id'] = array('EQ',$id);
+           // $ddata = $driver -> where($where['car_id'])->find();
+            $ddata = $driver -> where($where['car_id'])->select();
+            $this->assign('ddata',$ddata);
+            
 
             $sclass = M('Sclass');
             $sdata = $sclass->field('id,sname')->select();
             $this->assign('sdata',$sdata);
 
-            $this->display('upFoods');
+            $this->display();
         }
         public function up(){
             $_POST['start_time'] = strtotime($_POST['start_time']);

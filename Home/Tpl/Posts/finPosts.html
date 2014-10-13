@@ -36,8 +36,42 @@
 			      			<td>　<{$Think.session.uaddress}></td>
 			      			<td class="font_explain">&nbsp;</td>
 		        			</tr>
+		        			
+		        			
+		        			
+		        			
+		        			<tr>
+			      			<td align="right" height="35"><label for="ytime">预约时间</label></td>
+			      			<td>　
+							<empty name="Think.session.ytime">无
+							<else /><{$Think.session.ytime}>
+							</empty>
+			      			</td>
+			      			<td class="font_explain">&nbsp;</td>
+		        			</tr>
+		        			<tr>
+			      			<td align="right" height="35"><label for="start">起点</label></td>
+			      			<td>　
+							<empty name="Think.session.start">无
+							<else /><{$Think.session.start}>
+							</empty>
+			      			</td>
+			      			<td class="font_explain">&nbsp;</td>
+		        			</tr>
+		        			<tr>
+			      			<td align="right" height="35"><label for="end">终点</label></td>
+			      			<td>　
+							<empty name="Think.session.end">无
+							<else /><{$Think.session.end}>
+							</empty>
+			      			</td>
+			      			<td class="font_explain">&nbsp;</td>
+		        			</tr>
+		        			
+		        			
+		        			
 			    		<tr>
-			      			<td align="right" height="47"><label for="userohters">餐饮要求</label></td>
+			      			<td align="right" height="35"><label for="userohters">车辆要求</label></td>
 			      			<td>　
 							<empty name="Think.session.ask">无
 							<else /><{$Think.session.ask}>
@@ -66,7 +100,7 @@
 				<volist name="Think.session.forms" id="vo">
 					<tr>
 						<td><{$vo.name}></td>
-						<td><{$vo.price}>元</td>
+						<td><{$vo.price}>元/小时</td>
 						<td>x<{$vo.number}></td>
 						<td>
 							<{$vo['price']*$vo['number']}>

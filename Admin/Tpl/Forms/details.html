@@ -63,10 +63,16 @@
                             <td><{$udata.truename}></td>
                         </tr>
                          <tr>
-                            <td>接车地址</td>
+                            <td>用户地址</td>
                             <td><{$udata.address}></td>        
                             <td>电话号码</td>                                                           
                             <td><{$udata.phone}></td>
+                        </tr>
+                         <tr>
+                            <td>起点地址</td>
+                            <td><{$udata.start}></td>        
+                            <td>终点地址</td>                                                           
+                            <td><{$udata.end}></td>
                         </tr>
                         <tr>                             
                             <td>订车时间</td>                                                           
@@ -80,7 +86,13 @@
                                 <else /> 已过期
                                 </if>
                             </td>
-                        </tr>                              
+                        </tr>  
+                         <tr>
+                            <td>预约时间(年/月/日/时/分)</td>
+                            <td><{$udata.ytime}></td>        
+                            <td></td>                                                           
+                            <td></td>
+                        </tr>                            
                     </tbody>
                 </table>
                 <table class="table table-bordered" id="dyntable">
@@ -105,10 +117,10 @@
                                             <td style="text-indent:2em;">
                                                     <{$vo.foodname}>
                                             </td>
-                                            <td class="center"><{$vo.price}>￥</td>
+                                            <td class="center"><{$vo.price}>￥/小时</td>
                                             <td class="center">
-                                                <empty name="vo.yprice"><{$vo.price}>￥
-                                                <else /> <{$vo.yprice}>￥
+                                                <empty name="vo.yprice"><{$vo.price}>￥/小时
+                                                <else /> <{$vo.yprice}>￥/小时
                                                 </empty>
                                             </td>
                                             
@@ -116,7 +128,7 @@
                                                 <{$vo.foods_number}>
                                             </td>
                                             <td class="center">
-                                                <{$vo.nprice}>￥
+                                                <{$vo.nprice}>￥/小时
                                             </td>
                                         </tr>
                                 </volist>

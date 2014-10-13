@@ -35,17 +35,17 @@
             </ul><!--skins-->
             <ul class="breadcrumb">
                 <li><a href="__APP__/Index/main">Home</a> <span class="divider">/</span></li>
-                <li><a href="#">客户管理</a> <span class="divider">/</span></li>
+                <li><a href="#">司机管理</a> <span class="divider">/</span></li>
                 <li class="active">修改客户</li>
             </ul>
         </div><!--breadcrumbs-->
         <div class="pagetitle">
-            <h1>修改客户</h1> <span>修改客户信息</span>
+            <h1>修改司机</h1> <span>修改司机信息</span>
         </div><!--pagetitle-->
         
         <div class="maincontent">
             <div class="contentinner">
-                <h4 class="widgettitle">修改客户</h4>
+                <h4 class="widgettitle">修改司机</h4>
                 <div class="widgetcontent">
                     <form class="stdform" action="__APP__/Customers/mod" method="post" enctype="multipart/form-data">
                         <input type="hidden" name="id" id="id"  value="<{$data.id}>"/>
@@ -58,25 +58,25 @@
                         <p>
                             <label>密码</label>
 							<span class="field">
-                                <input type="password" name="userpwd" class="input-xxlarge" placeholder="userpwd"  value="<{$data.userpwd}>"/>
+                                <input type="password" name="password" class="input-xxlarge" placeholder="userpwd"  value="<{$data.password}>"/>
                             </span>
                         </p>
 						<p>
                             <label>实名</label>
                             <span class="field">
-                                <input type="text" name="true_name" class="input-xxlarge" placeholder="true_name"  value="<{$data.true_name}>"/>
+                                <input type="text" name="name" class="input-xxlarge" placeholder="true_name"  value="<{$data.name}>"/>
                             </span>
                         </p>
 						<p>
-                            <label>车型</label>
+                            <label>车名</label>
                             <span class="field">
-                                <input type="text" name="car_type" class="input-xxlarge" placeholder="car_type"  value="<{$data.car_type}>"/>
+                                <input type="text" name="car_id" class="input-xxlarge" placeholder="car_type"  value="<{$cdata.name}>"/>
                             </span>
                         </p>
 						<p>
-                            <label>酒店</label>
+                            <label>车号</label>
                             <span class="field">
-                                <input type="text" name="hotel" class="input-xxlarge" placeholder="hotel"  value="<{$data.hotel}>"/>
+                                <input type="text" name="car_id" class="input-xxlarge" placeholder="car_type"  value="<{$data.car_id}>"/>
                             </span>
                         </p>
 						<p>
@@ -88,7 +88,7 @@
                         <p>
                             <label>phone</label>
                             <span class="field">
-                                <input type="text" name="phone" class="input-xxlarge" placeholder="phone"  value="<{$data.phone}>"/>
+                                <input type="text" name="phone" class="input-xxlarge" placeholder="phone"  value="<{$data.driver_phone}>"/>
                             </span>
                         </p>
 						<p>

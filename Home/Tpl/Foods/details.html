@@ -105,7 +105,15 @@
 					</p>
 					<p class="pstyle">价格：
 						<font style="font-size:14px;">
-							<{$data.price}>￥
+							<{$data.price}>￥/小时
+						<font>
+					</p>
+					<p class="pstyle">优惠：
+						<font style="font-size:14px;">
+							<empty name="data.yprice">
+									<{$data.price}>元/小时
+		                                                	<else /> 	<{$data.yprice}>元/小时
+		                                                	</empty>
 						<font>
 					</p>
 					<p class="pstyle">状态：

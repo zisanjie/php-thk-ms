@@ -35,18 +35,18 @@
             </ul><!--skins-->
         	<ul class="breadcrumb">
                 <li><a href="__APP__/Index/main">Home</a> <span class="divider">/</span></li>
-                <li><a href="#">客户管理</a> <span class="divider">/</span></li>
-                <li class="active">客户列表</li>
+                <li><a href="#">司机管理</a> <span class="divider">/</span></li>
+                <li class="active">司机列表</li>
             </ul>
         </div><!--breadcrumbs-->
         <div class="pagetitle">
-        	<h1>客户列表</h1> <span>用来显示所有客户相关信息</span>
+        	<h1>司机列表</h1> <span>用来显示所有司机相关信息</span>
         </div><!--pagetitle-->
         
         <div class="maincontent">
         	<div class="contentinner">
             
-            	<h4 class="widgettitle">客户列表</h4>
+            	<h4 class="widgettitle">司机列表</h4>
             	<table class="table table-bordered" id="dyntable">
                     <colgroup>
                         <col class="con0" style="align: center; width: 4%" />
@@ -66,8 +66,7 @@
                             <th class="center">ID</th>
                             <th class="center">用户名</th>
                             <th class="center">实名</th>
-                            <th class="center">车型</th>
-                            <th class="center">酒店</th>
+                            <th class="center">车号</th>
 							<th class="center">pay</th>
 							<th class="center">phone</th>
 							<th class="center">好评</th>
@@ -87,18 +86,13 @@
                                      <td class="center"><{$i}></td>
 	                           <td class="center"><{$vo.username}></td>
 	                         <td class="center">
-                                            <empty name="vo.true_name">未填写
-                                            <else /> <{$vo.true_name}>
+                                            <empty name="vo.name">未填写
+                                            <else /> <{$vo.name}>
                                             </empty>
                                     </td>
 									<td class="center">
-                                            <empty name="vo.car_type">未填写
-                                            <else /> <{$vo.car_type}>
-                                            </empty>
-                                    </td>
-                                    <td class="center">
-                                            <empty name="vo.hotel">未填写
-                                            <else /> <{$vo.hotel}>
+                                            <empty name="vo.car_id">未填写
+                                            <else /> <{$vo.car_id}>
                                             </empty>
                                     </td>
                                     <td class="center">
@@ -107,8 +101,8 @@
                                             </empty>
                                     </td>
 									<td class="center">
-                                            <empty name="vo.phone">未填写
-                                            <else /> <{$vo.phone}>
+                                            <empty name="vo.driver_phone">未填写
+                                            <else /> <{$vo.driver_phone}>
                                             </empty>
                                     </td>
 									<td class="center">

@@ -80,10 +80,13 @@
 	    		$forms = M('Forms');
 	    		$foods = M('Foods');
 	    		$user = M('Users');
-
+	    		$driver = M('Driver');
+	    			
+	    			
 	    		$form_number = trim($_GET['form_number']);
 	    		$where['form_number'] = array('EQ',$form_number);
 	    		$data = $forms->where($where)->select();
+	    		
 
 	    		$ud = $user->find($data[0]['uid']);
 	    		$udata['id']	 =   $data[0]['uid'];	    		
@@ -91,6 +94,9 @@
 	    		$udata['ask']	 =   $data[0]['ask'];
 	    		$udata['form_number'] =   $data[0]['form_number'];
 	    		$udata['status'] =   $data[0]['status'];
+	    		$udata['start'] =	$data[0]['start'];
+	    		$udata['end'] =	$data[0]['end'];
+	    		$udata['ytime'] =	$data[0]['ytime'];
 	    		$udata['username'] =   $ud['username'];
 	    		$udata['truename'] =   $ud['truename'];
 	    		$udata['address'] =   $ud['address'];
@@ -99,6 +105,8 @@
 
 	    		foreach($data as &$row){
 	    			$fdata = $foods->find($row['fid']);
+	    			$ddata = $driver->find($row['id']);
+	    			$row['drivername'] = $ddata['name'];
 	    			$row['foodname'] = $fdata['name'];
 	    			$row['price'] = $fdata['price'];
 	    			$row['yprice'] = $fdata['yprice'];

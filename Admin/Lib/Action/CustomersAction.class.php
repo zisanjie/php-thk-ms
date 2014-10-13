@@ -7,17 +7,21 @@ class CustomersAction extends PublicAction {
     }
 
     public function listPage(){
-        $user = M('Customers');
+        $user = M('Driver');
         $udata = $user->select();
         $this->assign('udata', $udata);
         $this->display();
     }
 
     function editPage(){
-    	$user = M('Customers');
-    	$uid = $_GET['id'];
+    	$user = M('Driver');
+    	$foods = M('Foods');
+    	$uid = $_GET['driver_id'];
         	$udata = $user->find($uid);
+        	$where[id] = array('EQ',$udata[car_id]); 
+        	$cdata = $foods->where($where)->find();
         	$this->assign('data', $udata);
+        	$this->assign('cdata',$cdata);
         	$this->display();
     }
     function mod(){
@@ -39,7 +43,7 @@ class CustomersAction extends PublicAction {
             	$_POST['userpwd'] = md5($password);
             }
 
-    	$user = M('Customers');
+    	$user = M('Driver');
     	 if($user->save($_POST)){
 
                 $this->redirect('Customers/listPage');     //显示列表信息
@@ -53,7 +57,7 @@ class CustomersAction extends PublicAction {
 
     function del(){
     	
-    	$user = M('Customers');
+    	$user = M('Driver');
 	if($user->delete(trim($_GET['id']))){
 
 	    $this->success('删除数据成功!');
@@ -80,7 +84,7 @@ class CustomersAction extends PublicAction {
 
             $_POST['userpwd'] = md5($_POST['userpwd']);
 
-    	$man = M('Customers');
+    	$man = M('Driver');
 
     	if($man->add($_POST)){
     		 $this->redirect('Customers/listPage');
