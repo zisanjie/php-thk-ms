@@ -13,7 +13,7 @@
 			$this->assign('udata',$udata);
 
 			/*最新车辆*/
-			$newfoods = $this->_getNewFoods();			
+			$newfoods = $this->_getNewFoods();		
 			$this->assign('newfoods',$newfoods);
 
 			$logs = $this->_getLogs();
@@ -39,7 +39,7 @@
 			$foodTotal = $foods->count('id');
 			$this->assign('foodTotal',$foodTotal);	
 
-			$fav = $this->_getFav();
+			$fav = $this->_getNewFoods();	
 			$this->assign('favdata',$fav);	
 
 			$this->display();

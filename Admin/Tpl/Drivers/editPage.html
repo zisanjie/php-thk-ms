@@ -1,0 +1,135 @@
+<include file="Public:form.head" />
+<script>
+    $(function(){
+
+        $('.skin-color').click(function(){
+
+            $('head').append("<link id='skinstyle' rel='stylesheet' href='__PUBLIC__/Admin/tpl/css/style."+$(this).attr('href')+".css' type='text/css' />");   
+
+            $.post('__URL__/changecolor',{'color':$(this).attr('href')},function(data){
+                // alert(data);
+                        
+            });
+            return false;
+        });
+    });
+
+</script>
+<body onload = "startTime();">
+
+<div class="mainwrapper">
+    
+    <include file="Public:menu.body" />
+    
+    <!-- START OF RIGHT PANEL -->
+    <div class="rightpanel">
+        <include file="Public:users.body" /><!--右边头部-->
+        <div class="breadcrumbwidget">
+            <ul class="skins">
+                <li><a href="default" class="skin-color default"></a></li>
+                <li><a href="orange" class="skin-color orange"></a></li>
+                <li><a href="dark" class="skin-color dark"></a></li>
+                <li>&nbsp;</li>
+                <li class="fixed"><a href="" class="skin-layout fixed"></a></li>
+                <li class="wide"><a href="" class="skin-layout wide"></a></li>
+            </ul><!--skins-->
+            <ul class="breadcrumb">
+                <li><a href="__APP__/Index/main">Home</a> <span class="divider">/</span></li>
+                <li><a href="#">司机管理</a> <span class="divider">/</span></li>
+                <li class="active">修改客户</li>
+            </ul>
+        </div><!--breadcrumbs-->
+        <div class="pagetitle">
+            <h1>修改司机</h1> <span>修改司机信息</span>
+        </div><!--pagetitle-->
+        
+        <div class="maincontent">
+            <div class="contentinner">
+                <h4 class="widgettitle">修改司机</h4>
+                <div class="widgetcontent">
+                    <form class="stdform" action="__APP__/Drivers/mod" method="post" enctype="multipart/form-data">
+                        <input type="hidden" name="id" id="id"  value="<{$data.id}>"/>
+                        <p>
+                            <label>用户名</label>
+                            <span class="field">
+                                <input type="text" name="username" class="input-xxlarge" placeholder="username"  value="<{$data.username}>"/>
+                            </span>
+                        </p>
+                        <p>
+                            <label>密码</label>
+							<span class="field">
+                                <input type="password" name="password" class="input-xxlarge" placeholder="userpwd"  value="<{$data.password}>"/>
+                            </span>
+                        </p>
+						<p>
+                            <label>实名</label>
+                            <span class="field">
+                                <input type="text" name="name" class="input-xxlarge" placeholder="true_name"  value="<{$data.name}>"/>
+                            </span>
+                        </p>
+                        <p>
+                            <label>ID</label>
+                            <span class="field">
+                                <input type="text" name="driver_id" class="input-xxlarge" placeholder="ID"  value="<{$data.driver_id}>"/>
+                            </span>
+                        </p>
+						<p>
+                            <label>车名</label>
+                            <span class="field">
+                                <input type="text" name="car_id" class="input-xxlarge" placeholder="car_type"  value="<{$cdata.name}>"/>
+                            </span>
+                        </p>
+						<p>
+                            <label>车号</label>
+                            <span class="field">
+                                <input type="text" name="car_id" class="input-xxlarge" placeholder="car_type"  value="<{$data.car_id}>"/>
+                            </span>
+                        </p>
+						<p>
+                            <label>支付</label>
+                            <span class="field">
+                                <input type="text" name="pay" class="input-xxlarge" placeholder="pay"  value="<{$data.pay}>"/>
+                            </span>
+                        </p>
+                        <p>
+                            <label>phone</label>
+                            <span class="field">
+                                <input type="text" name="driver_phone" class="input-xxlarge" placeholder="driver_phone"  value="<{$data.driver_phone}>"/>
+                            </span>
+                        </p>
+						<p>
+                            <label>好评</label>
+                            <span class="field">
+                                <input type="text" name="favorite" class="input-xxlarge" placeholder="favorite"  value="<{$data.favorite}>"/>
+                            </span>
+                        </p>
+						<p>
+                            <label>投诉</label>
+                            <span class="field">
+                                <input type="text" name="complain" class="input-xxlarge" placeholder="complain"  value="<{$data.complain}>"/>
+                            </span>
+                        </p>
+                        
+                        <p class="stdformbutton">
+                            <button class="btn btn-primary">修改</button>                           
+                        </p>
+                           
+                    </form>  
+                </div><!--widgetcontent-->
+            </div><!--contentinner-->
+        </div><!--maincontent-->
+        
+    </div><!--mainright-->
+    <!-- END OF RIGHT PANEL -->
+    
+    <div class="clearfix"></div>
+    
+    <div class="footer">
+        <div class="footerleft">Dcms Premium Admin Template v1.0</div>
+        <div class="footerright">&copy; ThemePixels - <a href="http://www.qq.com">Follow me on Tencent</a> - <a href="http://www.sina.com.cn">Follow me on Sina</a></div>
+    </div><!--footer-->
+
+    
+</div><!--mainwrapper-->
+</body>
+</html>

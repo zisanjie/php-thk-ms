@@ -174,96 +174,33 @@
 	    	function details(){
 	    		$forms = M('Forms');		//实例化订单表
 	    		$foods = M('Foods');		//实例化车辆表
-	    		$user = M('Users');			//实例化用户表
 	    		$driver = M('Driver');		//实例化司机表
 
 	    		$form_number = trim($_GET['form_number']);		//获取订单号
+	    		$where['form_number'] = $form_number;	//组装订单号条件
+	    		$data = $forms->where($where)->select();		//查找订单记录
 
-	    		if($form_number == session('uMsg')){			//
-	    			session('uMsg',null);	    			
-	    		}
+				foreach($data as $k => $v){							//遍历
+					$some["id"] = $v["fid"];						//从订单表找出车号
+					$foodsdata = $foods->where($some)->select();	//从车辆表查找对应车号记录
+					$wheredata = array();
+					$wheredata["driver_id"]=$foodsdata[0]["driver_id"];	//组装司机号条件
+					$driverdata = $driver->where($wheredata)->select();	//从司机表查找对应司机号信息
+					$data[$k]["name"] = $driverdata[0]["name"];
+					$data[$k]["driver_phone"]=$driverdata[0]["driver_phone"];
+				}
 	    		
-	    		
-
-	    		$where['form_number'] = array('EQ',$form_number);
-	    		$data = $forms->where($where)->select();
-	    		
-	    		
-	    		
-	    		//测试方案1
-	    	/*	mysql_connect("localhost:3306","root","binxu1992519");
-	    		mysql_select_db("dcms1");
-	    		mysql_set_charset("utf8");
-	    		mysql_query("set names 'utf8'");		//连接数据库
-	    		$sql="select * from dc_driver where (car_id=$data['fid']) ";
-	    		$query=mysql_query($sql);
-	    		$ddata=mysql_fetch_array($query);*/    //原生态php
-	    		
-	    		
-	    		//测试方案2
-	    		for ($i=0;$i<$data.length;$i++) {
-	    			$some['car_id']=$data[i]['fid'];
-	    		
-	    		}
-	    		$ddata = $driver->where($some)->select();
-	    	
-	    		
-	    		
-	    		$ud = $user->find($data[0]['uid']);
-	    		$udata['id']	 =   $data[0]['uid'];	    		
-	    		$udata['ftime']	 =   $data[0]['ftime'];
-	    		//$udata['ask']	 =   $data[0]['ask'];
-	    		//$udata['start']	 =   $data[0]['start'];
-	    		$udata['end']	 =   $data[0]['end'];
-	    		$udata['ytime']	 =   $data[0]['ytime'];
-	    		$udata['form_number'] =   $data[0]['form_number'];
-	    		$udata['status'] =   $data[0]['status'];
-	    		$udata['username'] =   $ud['username'];
-	    		$udata['truename'] =   $ud['truename'];
-	    		$udata['address'] =   $ud['address'];
-	    		$udata['phone'] =   $ud['phone'];
-	    		//$udata['name'] = $ddata['name'];
-	    		//$udata['driver_phone'] = $ddata['driver_phone'];	
-	    		$sum = 0;				   		
-
 	    		foreach($data as &$row){
 	    			$fdata = $foods->find($row['fid']);
-	    			
-	    			//测试方案3
-	    		//	$ddata = $driver->find($row['fid']);
-	    		//	$row['drivername'] = $ddata['name'];
-	    		
-	    			$row['driver_phone'] = $ddata['driver_phone'];
-	    			$row['foodname'] = $fdata['name'];
+	    			$row['carname'] = $fdata['name'];
 	    			$row['price'] = $fdata['price'];
 	    			$row['yprice'] = $fdata['yprice'];
 	    			$sum += $row['nprice'];
-	    			unset($row['ftime']);
-	    			unset($row['uid']);
-	    			unset($row['ask']);
-	    			unset($row['start']);
-	    			unset($row['end']);
-	    			unset($row['ytime']);
-	    			unset($row['form_number']);
-	    			unset($row['status']);
 	    		}	
 	    		
-	    		
-	    		
-	    		//测试方案4
-	 	 /*		foreach($data as &$row){
-	    			$ddata = $driver->find($row['fid']);
-	    			$row['drivername'] = $ddata['name'];
-	    			$row['driver_phone'] = $ddata['driver_phone'];
-	   		}*/
-
-	    		
-	    		
 	    		$udata['sum'] =   $sum;	    
-	    		$this->assign('some',$some);
 	    		$this->assign('data',$data);
 	    		$this->assign('udata',$udata);
-	    		$this->assign('ddata',$ddata);
 	    		$this->display();
 	    	}
 

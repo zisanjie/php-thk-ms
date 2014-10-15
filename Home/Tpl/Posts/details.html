@@ -15,61 +15,45 @@
                 </div>
                 <div>  
                 <table width="100%" cellspacing="0" cellpadding="0" align="center">
-                                <tr>
-                                    <th style="text-align:left;text-indent:3em;">名称</th>
-                                    <th class="center">单价</th>
-                                    <th class="center">优惠</th>
-                                    <th class="center">数量</th>
-                                    <th class="center">成交价</th>
-                                </tr>
-                                <volist name="data" id="vo">                                        
-                                        <tr>
-                                            <td style="text-align:left;text-indent:3em;">
-                                                    <{$vo.foodname}>
-                                            </td>
-                                             <td class="center"><{$vo.price}>￥</td>
-                                            <td class="center">
-                                                <empty name="vo.yprice"><{$vo.price}>￥
-                                                <else /> <{$vo.yprice}>￥
-                                                </empty>
-                                            </td>
-                                            
-                                            <td class="center">
-                                                <{$vo.foods_number}>
-                                            </td>
-                                            <td class="center">
-                                                <{$vo.nprice}>￥
-                                            </td>
-                                       
-                                        </tr>
-                                </volist> 
+                  <tr>
+                      <th class="center">名称</th>
+                      <th class="center">单价</th>
+                      <th class="center">优惠</th>
+                      <th class="center">数量</th>
+                      <th class="center">成交价</th>
+                      <th class="center">司机姓名</th>
+                      <th class="center">司机电话</th>
+                  </tr>
+                  <volist name="data" id="vo">                                        
+                          <tr>
+                              <td class="center">
+                                <{$vo.carname}>
+                              </td>
+                              <td class="center">
+                                <{$vo.price}>￥
+                              </td>
+                              <td class="center">
+                                  <empty name="vo.yprice">
+                                  <{$vo.price}>￥
+                                  <else /> <{$vo.yprice}>￥
+                                  </empty>
+                              </td>
+                              <td class="center">
+                                  <{$vo.foods_number}>
+                              </td>
+                              <td class="center">
+                                  <{$vo.nprice}>￥
+                              </td>
+                              <td class="center">
+                                  <{$vo.name}>
+                              </td>
+                              <td class="center">
+                                  <{$vo.driver_phone}>
+                              </td>
+                         
+                          </tr>
+                  </volist> 
                 </table> 
-                	<table width="100%" cellspacing="0" cellpadding="0" align="center">
-                				<tr>
-                                    <th style="text-align:left;text-indent:3em;">司机姓名</th>
-                                    <th style="text-align:left;text-indent:3em;">司机电话</th>
-                                </tr>
-                	<volist name="ddata" id="no">
-                	<tr>
-                					  <td style="text-align:left;text-indent:3em;">
-                                      <{$no.name}>
-                                      </td>
-                                      <td style="text-align:left;text-indent:3em;">
-                                      <{$no.driver_phone}>
-                                      </td>
-                                      <td style="text-align:left;text-indent:3em;">
-                                      <{$vo.start}>
-                                      </td>
-                                      <td style="text-align:left;text-indent:3em;">
-                                      <{$vo.end}>
-                                      </td>
-                    </tr>                            
-                    </volist>
-                	
-                	</table>
-                
-                                
-                   
                
                   </div>
                   <div style="text-align:right;height:50px;line-height:50px;clear:both;color:#AF5F5F;">

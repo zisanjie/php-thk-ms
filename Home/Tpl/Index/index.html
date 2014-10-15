@@ -56,13 +56,12 @@
 				
 				pic++;				
 				pic = pic>length?0:pic;
-
 				var imgurl = $('#right_l input:eq('+pic+')').val();
 				var id = $('#right_l input:eq('+pic+')').attr('class');
 				var url = '__APP__/Foods/details/id/'+id;
 				$('#right_l img').attr({src:imgurl});
 				$('#right_l a').attr({href:url});					
-			},3000);
+			},4000);
 			/* 图片轮播结束 */
 
 			/*添加到购物车Ajax*/
@@ -75,16 +74,16 @@
 
 					if('YES' == cdata.data){
 	                                                	
-	                                            	nowobj.text('已添加');
-	                                        	}else if('NO' == cdata.data){
-	                                        		nowobj.text('已存在');                   		
-	                                        	}else{                                      		
-	                                        		if(!confirm('您还没有登录,去登录吗?')){
-                                    				return false;
-                                				}
-	                                        		//window.location.href = "__APP__/Login/login/";
-	                                        		$('#myModal').modal('show');
-	                                        	}
+                    	nowobj.text('已添加');
+                	}else if('NO' == cdata.data){
+                		nowobj.text('已存在');                   		
+                	}else{                                      		
+                		if(!confirm('您还没有登录,去登录吗?')){
+        				return false;
+    				}
+                		//window.location.href = "__APP__/Login/login/";
+                		$('#myModal').modal('show');
+                	}
 
 				});
 			});

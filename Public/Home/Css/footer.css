@@ -1,7 +1,8 @@
 #footer{
 	width:980px;
 	min-height:50px;
-	margin:10px 0px 10px 320px;
+	margin:0 auto;
+    text-align:center;
 }
 #footer span{
 	font-size:12px;
@@ -12,7 +13,7 @@
 	text-decoration:none;
 }
 #footer .footer_left{
-	float:left;
+	float:center;
 }
 #footer .footer_right{
 	float:right;
